@@ -21,9 +21,9 @@ export const urlTiktokThumbnail = [
 "https://cdn.discordapp.com/attachments/786100091105706014/786510580960854016/cap_guy_who_tried_to_00_00_00_01.jpg",
 "https://cdn.discordapp.com/attachments/786100091105706014/786510578147262464/cap_1548784799245_tiktok_G_00_00_00_01.jpg",
 "https://cdn.discordapp.com/attachments/786100091105706014/786540734949359616/cap_1549427841158_guns_00_00_00_01.jpg",
-"https://cdn.discordapp.net/attachments/786100091105706014/786862300367421450/cap_like_yeee_00_00_00_01.jpg",
-"https://cdn.discordapp.net/attachments/786100091105706014/786862298690093116/cap_1599150677842_backflip_00_00_00_01.jpg",
-"https://cdn.discordapp.net/attachments/786100091105706014/786862302061789244/cap_572640beatboxcat_00_00_00_01.jpg"
+"https://cdn.discordapp.com/attachments/786100091105706014/786862300367421450/cap_like_yeee_00_00_00_01.jpg",
+"https://cdn.discordapp.com/attachments/786100091105706014/786862298690093116/cap_1599150677842_backflip_00_00_00_01.jpg",
+"https://cdn.discordapp.com/attachments/786100091105706014/786862302061789244/cap_572640beatboxcat_00_00_00_01.jpg"
 ];
 
 export const tiktokText = [
