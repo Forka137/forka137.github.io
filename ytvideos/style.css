@@ -1,0 +1,29 @@
+h1 {
+  text-align: center;
+}
+p{
+    font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+.marco{
+    border: 5px ridge rgba(28,110,164,0.86);
+    border-radius: 7px;
+}
+.ml2 {
+  font-weight: 900;
+  font-size: 5em;
+}
+
+.ml2 .letter {
+  display: inline-block;
+  line-height: 1em;
+  color: #dd0000;
+}
+.box{
+    float:left;
+    margin-right:30px;
+    margin-left:30px;
+}
+}
+.clear{
+    clear:both;
+}

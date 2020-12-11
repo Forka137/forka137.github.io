@@ -1,0 +1,20 @@
+body {
+	background-image: url("images/404_bg.png");			/* la imagen la encuentra relativa al archivo style.css no al html */
+    background-repeat: no-repeat;
+}
+.container{
+	padding:20px;
+	background-color: rgba(0, 0, 0, 0.5);
+	width:600px;
+	border-radius:10px;
+}
+.texto {
+	font-family:Helvetica, Arial, sans-serif;
+	font-size:30px;
+	color: white;
+}
+#omg {
+	font-size:10px;
+}
+
+/* se añadio el style en el mismo html porque a veces no funcionaba */

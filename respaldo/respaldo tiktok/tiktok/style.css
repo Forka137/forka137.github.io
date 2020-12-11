@@ -1,0 +1,131 @@
+body{
+	font-family:Helvetica, Arial, sans-serif;
+	background-color:rgb(54,57,62);		/*color de fondo de discord jz */
+}
+html,body{
+	height:100%;
+}
+h1{									/*titulo videos webm*/
+	float:left;
+	padding:10px;
+	margin-right: 10px;
+}
+#versión{
+	font-size:10px;
+}
+#tiktok_logo{
+	float:left;
+	display:block;					/*importante ya que una imagen por defecto no es un bloque, (no funcionan cosas como el margin) */
+	height:80px;
+	margin:10px auto 0px 50px;
+}
+#ae86{
+	float:left;
+	display:block;
+	height:50px;
+	margin:20px auto 0px 30px;
+}
+p#darkLightMode{
+	cursor:pointer;
+	float:right;
+	margin-top:60px;
+	margin-right:70px;
+	font-size:20px;
+	color:white;
+}
+h2{									/*ojo, el h2 segun su ancho a veces empuja el primer video hacia la izquierda */ /*texto de la descripcion de la pagina*/
+	float:right;
+	margin-top:50px;
+	margin-bottom:0px;				/*arregló el problema de que las cajas chocaban */
+	width:440px;
+	font-style:bold;
+	font-size:20px;
+	color:white;
+}
+h3{									/*texto del titulo de los videos*/
+	margin:10px auto 0px auto;
+	padding:0px 0px 5px 10px;						
+	font-style:bold;
+	font-size:16px;
+	color:white;
+}
+#lastUpdate{
+	font-size:10px;
+	color:black;
+	margin-left:5px;
+}
+video, .thumbnail{
+	display:block;
+	margin:0px auto 30px auto;
+	max-height:800px;
+	max-width:1000px;
+}
+.video_header{
+	border-bottom:2px solid gray;
+}
+#header{
+	height:100px;
+	min-width:1200px;				/*para evitar que al achicar la ventana se rompan las cosas xd */
+	border-top:2px solid black;
+	border-right:2px solid black;
+	border-left:2px solid black;
+	border-bottom:3px solid black;
+	background-color:rgb(100,100,100);
+}
+#main_box{
+	margin:0px auto 0px auto;
+	min-width:500px;
+	max-width:1200px;
+/*	border-right:2px solid gray;
+	border-left:2px solid gray;*/
+}
+#control{
+	position:fixed;
+	text-align:right;
+	left:1650px;
+}
+#proxima{
+	font-size:10px;
+	font-style:italic;
+	letter-spacing:normal;
+}
+#goToTheTop{
+	cursor:pointer;
+}
+.caja_check{
+	width:20px;
+	height:20px;
+	float:left;
+}
+.closeVideo{
+	float:right;
+	cursor:pointer;
+}
+ul{
+	margin:0px 30px 0px 20px;
+	padding:10px;
+}
+li{
+	margin:0px 0px 10px 0px;
+	letter-spacing:0.2em;
+	font-size:20px;
+	width:200px;
+	list-style-type:none;
+	color:white;
+}
+a{
+	text-decoration:none;
+}
+a:link{
+    color:white;
+}
+a:visited{
+    color:white;
+}
+a:hover{
+    color:gray;
+}
+a:active{
+    color:black;
+}
+/*recordatorio: quiero luego hacer con javascript que al clickear los iconos arriba solo aparezcan los de el tipo clickeado */
