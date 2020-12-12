@@ -1,6 +1,7 @@
 import {urlTiktokVideo} from "../listas/tiktok.js";
 import {urlTiktokThumbnail} from "../listas/tiktok.js";
 import {tiktokText} from "../listas/tiktok.js";
+import {tiktokCode} from "../listas/tiktok.js";
 
 const darkMode = document.querySelector('p#darkLightMode');			//si no es declarado constante, deja de ser botón inmediatamente
 var modeText = document.getElementById('darkLightMode');
@@ -71,17 +72,19 @@ toTheTop.addEventListener("click", () => {						//función para ir arriba.
 });
 
 //objeto tipo webm
-function webmVideo(vUrl,tUrl,text,number){
+function webmVideo(vUrl,tUrl,text,number,code){
 	this.videoUrl = vUrl;
 	this.thumbUrl = tUrl;
 	this.caption = text;
 	this.elementNumber = number;
+	this.name = code;
 	this.addToPage = function(previousElement){
 		previousElement.insertAdjacentHTML("afterend",` 
 			<div id="tiktok${this.elementNumber}">
 			<div class="video_header">
 				<h3>${this.caption}</h3>
 				<div id="closeVideo${this.elementNumber}" class="h3 closeVideo">Cerrar</div>
+				<div id="shareVideo${this.elementNumber}" class="shareVideo">Compartir</div>
 			</div>
 			<img id="thumb${this.elementNumber}" class="thumbnail" src=${this.thumbUrl} loading="lazy"/>
 			<div id="videoWebm${this.elementNumber}"></div>
@@ -105,6 +108,9 @@ function webmVideo(vUrl,tUrl,text,number){
 		close.style.display = 'none';
 		video.innerHTML = `<div id="videoWebm${this.elementNumber}"/></div>`;
 	}
+	this.shareVideo = function(){
+	window.open(`../allvideos/${this.name}.html`,'_blank');
+	}
 }
 
 
@@ -112,20 +118,24 @@ function webmVideo(vUrl,tUrl,text,number){
 var video = [];
 for (let i = 0; i < urlTiktokVideo.length; i++) {	
 	let previousElement = document.getElementById(`tiktok${i}`);
-	video[i] = new webmVideo(urlTiktokVideo[i], urlTiktokThumbnail[i], tiktokText[i],i+1);
+	video[i] = new webmVideo(urlTiktokVideo[i], urlTiktokThumbnail[i], tiktokText[i],i+1,tiktokCode[i]);
 	video[i].addToPage(previousElement);
 	}
 
 //crea todos los listeners
 for (let i = 0; i < urlTiktokVideo.length; i++) {												//al cambiar var i a let i, se solucionó el problema
 	let el = document.getElementById(`thumb${i+1}`);		//los thumb empiezan en 1			//de más abajo que console.log marcaba siempre 7
-	let el2 = document.getElementById(`closeVideo${i+1}`);	//los closeVideo también
+	let el2 = document.getElementById(`closeVideo${i+1}`);
+	let el3 = document.getElementById(`shareVideo${i+1}`);	//los closeVideo también
 	el.addEventListener("click", (event) => {
 		//console.log(i);										//marca 7 wtf
 		video[i].showVideo();
 		});
 	el2.addEventListener("click", (event) => {									
 		video[i].hideVideo();
+		});
+	el3.addEventListener("click", (event) => {									
+		video[i].shareVideo();
 		});
 	}
 

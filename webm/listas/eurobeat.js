@@ -55,5 +55,25 @@ export const eurobeatText = [
 "drifting around"
 ];
 
+export const eurobeatCode =[
+"eurbt1",
+"eurbt2",
+"eurbt3",
+"eurbt4",
+"eurbt5",
+"eurbt6",
+"eurbt7",
+"eurbt8",
+"eurbt9",
+"eurbt10",
+"eurbt11",
+"eurbt12",
+"eurbt13",
+"eurbt14",
+"eurbt15",
+"eurbt16",
+];
+
+
 //debe explicitarse las funciones que se pueden exportar
-//también este archivo debio declararse en el index.html como type="module" tanto este como el app.js
+//también este archivo debio declararse en el index.html como type="module" acerca del app.js

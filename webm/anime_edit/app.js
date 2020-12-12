@@ -1,6 +1,7 @@
 import {urlAnime_editVideo} from "../listas/anime_edit.js";
 import {urlAnime_editThumbnail} from "../listas/anime_edit.js";
 import {anime_editText} from "../listas/anime_edit.js";
+import {anime_editCode} from "../listas/anime_edit.js";
 
 const darkMode = document.querySelector('p#darkLightMode');			//si no es declarado constante, deja de ser botón inmediatamente
 var modeText = document.getElementById('darkLightMode');
@@ -71,17 +72,19 @@ toTheTop.addEventListener("click", () => {						//función para ir arriba.
 });
 
 //objeto tipo webm
-function webmVideo(vUrl,tUrl,text,number){
+function webmVideo(vUrl,tUrl,text,number, code){
 	this.videoUrl = vUrl;
 	this.thumbUrl = tUrl;
 	this.caption = text;
 	this.elementNumber = number;
+	this.name = code;
 	this.addToPage = function(previousElement){
 		previousElement.insertAdjacentHTML("afterend",` 
 			<div id="anime_edit${this.elementNumber}">
 			<div class="video_header">
 				<h3>${this.caption}</h3>
 				<div id="closeVideo${this.elementNumber}" class="h3 closeVideo">Cerrar</div>
+				<div id="shareVideo${this.elementNumber}" class="shareVideo">Compartir</div>
 			</div>
 			<img id="thumb${this.elementNumber}" class="thumbnail" src=${this.thumbUrl} loading="lazy"/>
 			<div id="videoWebm${this.elementNumber}"></div>
@@ -95,7 +98,7 @@ function webmVideo(vUrl,tUrl,text,number){
 		let close = document.getElementById(`closeVideo${this.elementNumber}`);
 		thumbnail.style.display = 'none';
 		close.style.display = 'inline';
-		video.innerHTML = `<video id="videoWebm${this.elementNumber}" src=${this.videoUrl} autoplay preload="metadata" controls /></video>`;
+		video.innerHTML = `<video id="videoWebm${this.elementNumber}" src=${this.videoUrl} autoplay preload="metadata" controls loop /></video>`;
 	}
 	this.hideVideo = function(){
 		let thumbnail = document.getElementById(`thumb${this.elementNumber}`);
@@ -105,6 +108,9 @@ function webmVideo(vUrl,tUrl,text,number){
 		close.style.display = 'none';
 		video.innerHTML = `<div id="videoWebm${this.elementNumber}"/></div>`;
 	}
+	this.shareVideo = function(){
+		window.open(`../allvideos/${this.name}.html`,'_blank');
+	}
 }
 
 
@@ -112,7 +118,7 @@ function webmVideo(vUrl,tUrl,text,number){
 var video = [];
 for (let i = 0; i < urlAnime_editVideo.length; i++) {	
 	let previousElement = document.getElementById(`anime_edit${i}`);
-	video[i] = new webmVideo(urlAnime_editVideo[i], urlAnime_editThumbnail[i], anime_editText[i],i+1);
+	video[i] = new webmVideo(urlAnime_editVideo[i], urlAnime_editThumbnail[i], anime_editText[i],i+1, anime_editCode[i]);
 	video[i].addToPage(previousElement);
 	}
 
@@ -120,6 +126,7 @@ for (let i = 0; i < urlAnime_editVideo.length; i++) {
 for (let i = 0; i < urlAnime_editVideo.length; i++) {												//al cambiar var i a let i, se solucionó el problema
 	let el = document.getElementById(`thumb${i+1}`);		//los thumb empiezan en 1			//de más abajo que console.log marcaba siempre 7
 	let el2 = document.getElementById(`closeVideo${i+1}`);	//los closeVideo también
+	let el3 = document.getElementById(`shareVideo${i+1}`);
 	el.addEventListener("click", (event) => {
 		//console.log(i);										//marca 7 wtf
 		video[i].showVideo();
@@ -127,19 +134,11 @@ for (let i = 0; i < urlAnime_editVideo.length; i++) {												//al cambiar va
 	el2.addEventListener("click", (event) => {									
 		video[i].hideVideo();
 		});
+	//vamos a probar el share
+	el3.addEventListener("click", (event) => {									
+		video[i].shareVideo();
+		});
 	}
-
-//video[0].showVideo();
-//console.log(urlAnime_editVideo[0])
-
-/*funciona!
-var video1 = new webmVideo(urlAnime_editVideo[0], urlAnime_editThumbnail[0], anime_editText[0]);
-video1.addToPage(firstElement,1);
-
-var el = document.getElementById('lastUpdate');
-el.textContent = 'Modificado el: ' + document.lastModified;
-
-*/
 
 function topFunction() {
   document.body.scrollTop = 0; // For Safari
@@ -147,26 +146,7 @@ function topFunction() {
 }
 
 
-/*
-var thumbVideo = document.getElementsByClassName("thumbnail");
-var insertVideo = document.getElementById("mind_mind");			
-var closeVideo = document.getElementsByClassName("closeVideo");
-
-thumbVideo[0].addEventListener("click", () => {
-	thumbVideo[0].style.display = 'none';
-	closeVideo[0].style.display = 'initial';
-	insertVideo.innerHTML = '</div id="mind_mind"><video title="Jamie Berry - Out Of My Mind"'
-	 +'src="https://cdn.discordapp.com/attachments/650597613367853072/650628432333635595/1543747326770_mind_mind.webm#t=0.1" autoplay preload="metadata" controls/></video></div>';
-	closeVideo[0].innerHTML = '<h3 class="closeVideo">Cerrar</h3>';
-});
-
-closeVideo[0].addEventListener("click", () => {
-	thumbVideo[0].style.display = 'block';
-	closeVideo[0].style.display = 'none';						//igual es importante para que no se pueda clickear invisible
-	insertVideo.innerHTML = '<div id="mind_mind"></div>';
-	closeVideo[0].innerHTML = '<h3 class="closeVideo"></h3>';
-});
-
-console.log(urlAnime_editVideo[0])
-
-*/
+//sobre el anime_editCode[i];
+//sucede que quiero que todos los videos tengan su página disponible para compartir más facilmente
+//entonces necesito darles un código único de manera que siempre el objeto pueda tener una referencia a dicha página html
+//eso es todo

@@ -37,5 +37,18 @@ export const anime_editText = [
 "i love evangelion"
 ];
 
+export const anime_editCode =[
+"anmedt1",
+"anmedt2",
+"anmedt3",
+"anmedt4",
+"anmedt5",
+"anmedt6",
+"anmedt7",
+"anmedt8",
+"anmedt9",
+"anmedt10"
+];
+
 //debe explicitarse las funciones que se pueden exportar
 //también este archivo debio declararse en el index.html como type="module" tanto este como el app.js

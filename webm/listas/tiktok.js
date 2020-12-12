@@ -40,5 +40,20 @@ export const tiktokText = [
 "beatbox cat"
 ];
 
+export const tiktokCode =[
+"tktk1",
+"tktk2",
+"tktk3",
+"tktk4",
+"tktk5",
+"tktk6",
+"tktk7",
+"tktk8",
+"tktk9",
+"tktk10",
+"tktk11"
+]
+
+
 //debe explicitarse las funciones que se pueden exportar
 //también este archivo debio declararse en el index.html como type="module" tanto este como el app.js
