@@ -11,17 +11,16 @@
 	<body>
 	<div id="header">
 		<h1>Videos WEBM</h1>
-		<img id="tiktok_logo"src="images/tiktoklogo.png" />
-		<img id="ae86" src="images/ae86.png" />
+		<img class="logo" src="images/ae86.png" />
 		<h2>Recopilación de videos en formato webm<span id="versión">
-			<br><i>(versión alpha)</i></span>
+			<br><i>(versión casi final)</i></span>
 			<span id="lastUpdate"></span></h2>
-		<p id="darkLightMode">Light Mode</p>
+		<p id="darkLightMode">Fondo claro</p>
 	</div>
 	<div id="control">
 		<ul>
-			<li><a href="../index.html">Categorías</a></li>
-			<li id="goToTheTop">Volver Arriba</li>
+			<li><a href="../index.html">Categorías</a></li>	 
+			<li id="goToTheTop"><a href='#'>Volver Arriba<a/></li>	<!-- se debe usar href='#' para que los elementos sean tab-ables-->
 		</ul>
 	</div>
 	<div id="main_box">
@@ -31,13 +30,3 @@
 	<script src="app.js" type="module"></script>					<!-- explicitar type="module" es la única manera de usar más de un archivo javascript, debe ser para ambos -->
 	</body>
 </html>
-
-<!--#t=0.1 se añade dentro de las comillas y al final del video para mostrar como thumbnail el primer frame del video -->
-<!--preload="metadata" indica que se descargue información como la duración del video, esto es por defecto en chrome. -->
-
-<!-- <div id="mind_mind" class="tiktok">
-<div class="video_header">
-	<h3>Can't get you out of my mind</h3>
-</div>
-<video title="Jamie Berry - Out Of My Mind" src="https://cdn.discordapp.com/attachments/650597613367853072/650628432333635595/1543747326770_mind_mind.webm#t=0.1" preload="metadata" controls /></video>
-</div> -->

@@ -13,19 +13,13 @@ h1{									/*titulo videos webm*/
 #versión{
 	font-size:10px;
 }
-#tiktok_logo{
-	float:left;
-	display:block;					/*importante ya que una imagen por defecto no es un bloque, (no funcionan cosas como el margin) */
-	height:80px;
-	margin:10px auto 0px 50px;
-}
-#ae86{
+.logo{
 	float:left;
 	display:block;
-	height:50px;
-	margin:20px auto 0px 30px;
+	height:80px;
+	margin:10px auto 10px 30px;
 }
-p#darkLightMode{
+#darkLightMode{
 	cursor:pointer;
 	float:right;
 	margin-top:60px;
@@ -43,8 +37,8 @@ h2{									/*ojo, el h2 segun su ancho a veces empuja el primer video hacia la 
 	color:white;
 }
 h3{									/*texto del titulo de los videos*/
-	margin:10px auto 0px auto;
-	padding:0px 0px 5px 10px;						
+	margin:0px auto 0px auto;
+	padding:5px 0px 5px 10px;					
 	font-weight:bold;
 	font-size:16px;
 	color:white;
@@ -82,11 +76,18 @@ video{
 	margin:0px auto 0px auto;
 	min-width:500px;
 	max-width:1200px;
+	padding-bottom:5px;
+	border-left:2px solid black;
+	border-right:2px solid black;
+	background-color:rgb(60,60,60);
 }
 #control{
 	position:fixed;
 	text-align:right;
-	left:1650px;
+	left:1620px;
+	margin-top:30px;
+	border-top:2px solid black;
+	border-bottom:2px solid black;
 }
 #goToTheTop{
 	cursor:pointer;
@@ -124,7 +125,6 @@ li{
 	margin:0px 0px 10px 0px;
 	letter-spacing:0.2em;
 	font-size:20px;
-	width:200px;
 	list-style-type:none;
 	color:white;
 }

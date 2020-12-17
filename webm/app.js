@@ -3,7 +3,7 @@ var modeText = document.getElementById('darkLightMode');
 var borderHead = document.getElementsByClassName("video_header");
 var thumbImage = document.getElementsByClassName("thumbnail");
 
-var lightModeName = "Dark "
+var lightModeName = "oscuro "
 
 const colorBlanco = "rgb(255,255,255)";
 const colorGris = "rgb(100,100,100)";
@@ -22,7 +22,7 @@ darkMode.addEventListener("click", () => {
 
 	if (light){													//estos if-else asignan los colores según la posición del interruptor de light or dark mode.
 		light = false;
-		lightModeName = "Light ";
+		lightModeName = "claro ";
 		colorValue = colorDiscord;
 		colorValue2 = colorGris;
 		colorValue3 = colorBlanco;
@@ -33,7 +33,7 @@ darkMode.addEventListener("click", () => {
 
 	}else{														//también "parchan" el cambio de borde que no se puede hacer con anime js, oops.
 		light = true;
-		lightModeName = "Dark ";
+		lightModeName = "oscuro ";
 		colorValue = colorBlanco;
 		colorValue2 = colorHeaderL;
 		colorValue3 = colorNegro;
@@ -42,7 +42,7 @@ darkMode.addEventListener("click", () => {
     	}
 
 	}
-	modeText.textContent = lightModeName+"Mode";
+	modeText.textContent = "Fondo "+lightModeName;
 	anime.timeline({
 		targets: "body",
 		loop: false,
@@ -56,7 +56,7 @@ darkMode.addEventListener("click", () => {
 		backgroundColor: colorValue2,
 		easing: "easeOutExpo"
 	}).add({
-		targets: "h2,h3,li,a:link, p#darkLightMode",
+		targets: "h2,h3,li,a:link, p#darkLightMode, .textoAbout",
 		loop: false,
 		duration: 500,
 		color: colorValue3,

@@ -3,21 +3,24 @@ import {urlAnime_editThumbnail} from "../listas/anime_edit.js";
 import {anime_editText} from "../listas/anime_edit.js";
 import {anime_editCode} from "../listas/anime_edit.js";
 
-const darkMode = document.querySelector('p#darkLightMode');			//si no es declarado constante, deja de ser botón inmediatamente
+const darkMode = document.querySelector('#darkLightMode');			//si no es declarado constante, deja de ser botón inmediatamente
 var modeText = document.getElementById('darkLightMode');
 var borderHead = document.getElementsByClassName("video_header");
 
-var lightModeName = "Dark "
+var lightModeName = "oscuro "
 
 const colorBlanco = "rgb(255,255,255)";
 const colorGris = "rgb(100,100,100)";
 const colorNegro = "rgb(0,0,0)";
 const colorDiscord = "rgb(54,57,62)";
 const colorHeaderL = "rgb(220,220,220)";
+const colorContent = "rgb(60,60,60)";
+const colorContentW = "rgb(245,245,245)";
 
 var colorValue = colorDiscord;
 var colorValue2 = colorGris;
 var colorValue3 = colorBlanco;
+var colorValue4 = colorContent;
 
 var light = false;
 
@@ -25,26 +28,28 @@ darkMode.addEventListener("click", () => {
 
 	if (light){													//estos if-else asignan los colores según la posición del interruptor de light or dark mode.
 		light = false;
-		lightModeName = "Light ";
+		lightModeName = "claro";
 		colorValue = colorDiscord;
 		colorValue2 = colorGris;
 		colorValue3 = colorBlanco;
+		colorValue4 = colorContent;
 		for (var i = 0; i < borderHead.length; i++) {
        	borderHead[i].style.borderBottom = "2px solid gray";
     	}
 		
 	}else{														//también "parchan" el cambio de borde que no se puede hacer con anime js, oops.
 		light = true;
-		lightModeName = "Dark ";
+		lightModeName = "oscuro";
 		colorValue = colorBlanco;
 		colorValue2 = colorHeaderL;
 		colorValue3 = colorNegro;
+		colorValue4 = colorContentW;
 		for (var i = 0; i < borderHead.length; i++) {					//habia que hacer un ciclo for para cambiar cada una de las clases, lol.
         borderHead[i].style.borderBottom ="2px solid rgb(220,220,220)";
     	}
 
 	}
-	modeText.textContent = lightModeName+"Mode";
+	modeText.textContent = "Fondo "+lightModeName;
 	anime.timeline({
 		targets: "body",
 		loop: false,
@@ -58,7 +63,13 @@ darkMode.addEventListener("click", () => {
 		backgroundColor: colorValue2,
 		easing: "easeOutExpo"
 	}).add({
-		targets: "h2,h3,li,a:link, p#darkLightMode",
+		targets: "#main_box",
+		loop: false,
+		duration: 500,
+		backgroundColor: colorValue4,
+		easing: "easeOutExpo"
+	},-100).add({
+		targets: "h2,h3,li,a:link, #darkLightMode, .shareVideo, .closeVideo",
 		loop: false,
 		duration: 500,
 		color: colorValue3,
@@ -83,8 +94,8 @@ function webmVideo(vUrl,tUrl,text,number, code){
 			<div id="anime_edit${this.elementNumber}">
 			<div class="video_header">
 				<h3>${this.caption}</h3>
-				<div id="closeVideo${this.elementNumber}" class="h3 closeVideo">Cerrar</div>
-				<div id="shareVideo${this.elementNumber}" class="shareVideo">Compartir</div>
+				<div id="closeVideo${this.elementNumber}" class="h3 closeVideo"><a href="#">Cerrar<a/></div>
+				<div id="shareVideo${this.elementNumber}" class="shareVideo"><a href="#">Compartir<a/></div>
 			</div>
 			<img id="thumb${this.elementNumber}" class="thumbnail" src=${this.thumbUrl} loading="lazy"/>
 			<div id="videoWebm${this.elementNumber}"></div>
@@ -113,6 +124,13 @@ function webmVideo(vUrl,tUrl,text,number, code){
 	}
 }
 
+//se debe crear la variable isArray antes de ejecutar shuffleArray, porque se usa dentro.
+var isArray = Array.isArray || function(value) {
+  return {}.toString.call(value) !== "[object Array]"
+};
+
+//randomiza los videos
+shuffleArray(urlAnime_editVideo, urlAnime_editThumbnail, anime_editText, anime_editCode);
 
 //crea todas las thumbnail y  los objetos webmVideo
 var video = [];
@@ -146,7 +164,41 @@ function topFunction() {
 }
 
 
+//algoritmo basado en fisher-yates (me lo robé de stackoverflow)
+function shuffleArray() {
+  var arrLength = 0;
+  var argsLength = arguments.length;
+  var rnd, tmp;
+
+  for (let index = 0; index < argsLength; index += 1) {
+    if (!isArray(arguments[index])) {
+      throw new TypeError("Argument is not an array.");
+    }
+
+    if (index === 0) {
+      arrLength = arguments[0].length;
+    }
+
+    if (arrLength !== arguments[index].length) {
+      throw new RangeError("Array lengths do not match.");
+    }
+  }
+
+  while (arrLength) {
+    rnd = Math.floor(Math.random() * arrLength);
+    arrLength -= 1;
+    for (let argsIndex = 0; argsIndex < argsLength; argsIndex += 1) {
+      tmp = arguments[argsIndex][arrLength];
+      arguments[argsIndex][arrLength] = arguments[argsIndex][rnd];
+      arguments[argsIndex][rnd] = tmp;
+    }
+  }
+}
+
+
 //sobre el anime_editCode[i];
 //sucede que quiero que todos los videos tengan su página disponible para compartir más facilmente
 //entonces necesito darles un código único de manera que siempre el objeto pueda tener una referencia a dicha página html
 //eso es todo
+
+
