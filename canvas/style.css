@@ -1,0 +1,25 @@
+body{
+	font-family:Helvetica, Arial, sans-serif;
+	background-color:rgb(54,57,62);		/*color de fondo de discord jz */
+}
+#gamebox{
+	background-color:rgb(255,255,255);
+	margin:50px auto 0px auto;
+	width:800px;
+	height:700px;
+}
+
+#canvas{
+	margin:48px auto 0px auto;
+	border-top:2px solid gray;
+	border-bottom:2px solid gray;
+	/*width:800px;
+	height:600px;*/
+}
+/* los límites del css hacen que el canvas se escale en vez de cambiar de tamaño 
+por lo tanto se debe definir width="800" height="600" dentro del html*/
+
+/*al añadirle 2 bordes de 2 px ahora la ventana es de 800x604
+por lo tnato cambie el margin a 48px */
+
+
