@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Pizarra con elásticos</title>
+		<title>Muchos polígonos</title>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=0.5 maximum-scale=1.0" />
         <meta http-equiv="X-UA-Compatible"content="ie=edge" />
@@ -11,7 +11,7 @@
 	<body>
 		<div id="gamebox">
 			<div id="controls">
-				Color: <select id="strokeStyleSelect">
+				<span class="text">Color del trazo:</span><select id="strokeStyleSelect">
 				<option value="red">Rojo</option> 
 				<option value="green">Verde</option> 
 				<option value="blue">Azul</option> 
@@ -21,15 +21,39 @@
 				<option value="navy">Azul marino</option> 
 				<option value="purple">Púrpura</option>
 				</select>
-				<span id="grid">Grosor:</span><select id="widthSelect">
+				<span class="text">Color de relleno:</span><select id="fillStyleSelect">
+				<option value="red" selected>Rojo</option>
+				<option value="green">Verde</option> 
+				<option value="blue">Azul</option> 
+				<option value="orange">Naranjo</option> 
+				<option value="cornflowerblue">Azul bkn</option> 
+				<option value="goldenrod">Dorado</option> 
+				<option value="navy">Azul marino</option> 
+				<option value="purple">Púrpura</option>
+				</select>
+				<input id="eraseAllButton" type="button" value="Borrar todo"/>
+				<br>
+				<span class="text">Grosor del trazo:</span><select id="widthSelect">
 				<option value="2">Delgado</option> 
 				<option value="4" selected>Medio</option> 
 				<option value="8">Thicc</option> 
 				</select>
-
-				<span id="grid">Referencia:</span>
+				<span class="text">Lados:</span><select id="sidesSelect">
+				<option value="3" selected>3</option> 
+				<option value="4">4</option> 
+				<option value="5">5</option> 
+				<option value="6">6</option> 
+				<option value="7">7</option> 
+				<option value="8">8</option> 
+				<option value="9">9</option> 
+				<option value="10">10</option>
+				</select>
+				<span class="text">Relleno:</span>
+				<input id="fillCheckbox" type="checkbox" checked />
+				<span class="text">Rotación:</span>
+				<input id="rotateCheckbox" type="checkbox" checked />
+				<span class="text">Referencia:</span>
 				<input id="guidewireCheckbox" type="checkbox" unchecked />
-				<input id="eraseAllButton" type="button" value="Borrar todo"/>
 			</div>
 			<canvas id="canvas" width="800" height="600"></canvas>
 		</div>
