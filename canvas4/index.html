@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Mucho texto</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=0.5 maximum-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible"content="ie=edge" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="shortcut icon" href="joystick2.ico" />
+	</head>
+	<body>
+		<div id="gamebox">
+			<div id="controls">
+				<span class="text">Fuente:</span><select id="fontSelect">
+				<option value="arial" selected>Arial</option>
+				<option value="palatino">Palatino</option> 
+				<option value="calibri">Calibri</option>
+				<option value="georgia">Georgia</option>
+				<option value="verdana">Verdana</option>
+				<option value="impact">Impact</option>
+				<option value="comic sans ms">Comic Sans</option>
+				<option value="courier new">Courier New</option>
+				<option value="lucida console">Lucida Console</option>
+				</select>
+				<span class="text">Tamaño:</span><select id="sizeSelect">
+				<option value="12">12 px</option> 
+				<option value="24">24 px</option> 
+				<option value="26">26 px</option>
+				<option value="28">28 px</option>
+				<option value="30">30 px</option>
+				<option value="32" selected>32 px</option>
+				<option value="34">34 px</option>
+				<option value="38">38 px</option>
+				<option value="42">42 px</option>
+				<option value="50">50 px</option>
+				<option value="60">60 px</option>
+				<option value="72">72 px</option>
+				</select>
+				<span class="text">Tipo de relleno:</span><select id="fillStyleSelect">
+				<option value="black">Negro</option>
+				<option value="white" selected >Blanco</option>
+				<option value="red">Rojo</option>
+				<option value="azure">Azure</option>
+				<option value="darkcyan">Cian</option>
+				<option value="yellow">Amarillo</option>
+				<option value="darkblue">Azul</option>
+				<option value="lightgray">Gris</option>
+				<option value="limegreen">Lima</option>
+				<option value="pink">Rosado</option>
+				</select>
+				<span class="text">tipo de línea:</span><select id="strokeStyleSelect">
+				<option value="black">Negro</option>
+				<option value="white">Blanco</option>
+				<option value="navy" selected>Navy</option>
+				<option value="aqua">Aqua</option>
+				<option value="brown">Café</option>
+				</select>
+			</div>
+			<canvas id="canvas" width="800" height="600"></canvas>
+		</div>
+	<script src="../lib/anime.min.js"></script>
+	<script src="app.js"></script>	
+	</body>
+</html>
+
+<!--#t=0.1 se añade dentro de las comillas y al final del video para mostrar como thumbnail el primer frame del video -->
+<!--preload="metadata" indica que se descargue información como la duración del video, esto es por defecto en chrome. -->
+
