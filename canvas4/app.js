@@ -15,7 +15,8 @@ var canvas = document.getElementById('canvas'),
 	blink_off = 300,
 	mousedown = {},
 	fontHeight,
-	drawingSurfaceImageData;			
+	drawingSurfaceImageData,
+	currentImageData;			
 
 TextCursor = function (width, fillStyle, strokeStyle) {
 	this.fillStyle = fillStyle || 'rgba(0,0,0,0.5)';
@@ -34,7 +35,7 @@ TextCursor.prototype = {
 	draw: function(context, left, bottom) {
 		context.save();
 
-		this.left = left+2;		
+		this.left = left;	
 		this.top = bottom - this.getHeight(context);
 
 		context.beginPath();
@@ -176,10 +177,10 @@ function setFont() {
 function blinkCursor(x, y) {
 	clearInterval(blinkingInterval);
 	blinkingInterval = setInterval( function (e) {
-		cursor.erase(context, drawingSurfaceImageData);
+		cursor.erase(context, currentImageData);
 
 		setTimeout( function (e) {
-			if (cursor.left == x+2 &&									
+			if (cursor.left == x &&									
 				cursor.top + cursor.getHeight(context) == y) {
 				cursor.draw(context, x, y);
 			}
@@ -187,11 +188,26 @@ function blinkCursor(x, y) {
 	}, 1000);
 }
 
-function moveCursor(x, y) {
-	cursor.erase(context, drawingSurfaceImageData);
+function moveCursorAndDrawLine(x, y, sameLine) {
+	sameLine = sameLine || false;
+	if (sameLine) {
+	//si el cursor está en la misma linea, borrara el cursor
+	//reemplazando con el rectángulo del imageData anterior
+			cursor.erase(context, drawingSurfaceImageData);
+	} else {
+		//si el cursor se va a otra linea, reemplazará
+		//lo que estaba debajo con el imageData actual
+			cursor.erase(context, currentImageData);
+	}
+	
 	saveDrawingSurface();
-	context.putImageData(drawingSurfaceImageData, 0, 0);
-
+	context.save();
+	setShadow();
+	line.draw(context);
+	//necesito hacer esto para que la sombra solo se aplique
+	//a las letras y no al cursor
+	context.restore();
+	currentImageData = context.getImageData(0, 0, canvas.width, canvas.height);
 	cursor.draw(context, x, y);
 	blinkCursor(x, y);
 }
@@ -213,13 +229,13 @@ function setShadow(){
 }
 
 function updateText(){
+	if (line) {
 		context.lineWidth = Math.floor(sizeSelect.value/16);
 		context.save();
 		line.erase(context, drawingSurfaceImageData);
-		moveCursor(line.left + line.getWidth(context), line.bottom);
-		setShadow();
-		line.draw(context);
+		moveCursorAndDrawLine(line.left + line.getWidth(context), line.bottom, true);
 		context.restore();
+	}
 }
 //event handlers
 
@@ -231,7 +247,7 @@ canvas.onmousedown = function(event) {
 	mousedown.x = loc.x;									//guarda la posición en el momento que hice click
 	mousedown.y = loc.y;
 	line = new TextLine(mousedown.x, mousedown.y);
-	moveCursor(mousedown.x, mousedown.y);
+	moveCursorAndDrawLine(mousedown.x, mousedown.y);
 
 	//debug
 	//console.log("mousedown");
@@ -274,10 +290,7 @@ document.onkeydown = function (e) {
 
 		line.erase(context, drawingSurfaceImageData);
 		line.removeCharacterBeforeCaret();
-
-		moveCursor(line.left + line.getWidth(context), line.bottom);
-		setShadow();
-		line.draw(context);
+		moveCursorAndDrawLine(line.left + line.getWidth(context), line.bottom, true);
 		context.restore();
 
 	}
@@ -294,9 +307,7 @@ document.onkeypress = function (e) {
 		//borra el último string
 		line.insert(key);
 		//actualiza el string de this.text;
-		moveCursor(line.left + line.getWidth(context), line.bottom);
-		setShadow();
-		line.draw(context);
+		moveCursorAndDrawLine(line.left + line.getWidth(context), line.bottom, true);
 		//dibuja el nuevo string con un fill y stroke.
 		context.restore();
 	}
@@ -307,11 +318,12 @@ document.onkeypress = function (e) {
 drawBackground();
 context.strokeStyle = strokeStyleSelect.value;	
 context.fillStyle = fillStyleSelect.value;
-context.lineWidth = 1;
+context.lineWidth = Math.floor(sizeSelect.value/16);
 setFont();
 saveDrawingSurface();
+currentImageData = drawingSurfaceImageData;
 updateText();
-//cada vez que se usa moveCursor(); esta función hace un saveDrawing();
+//cada vez que se usa moveCursorAndD(); esta función hace un saveDrawing();
 //lo que significa que guarda el estado del canvas justo después de borrar el cursor con cursor.erase();
 
 //al hacer un keystroke, se borra 
