@@ -1,0 +1,38 @@
+body{
+	font-family:Helvetica, Arial, sans-serif;
+	background-color:rgb(54,57,62);		/*color de fondo de discord jz */
+}
+#gamebox{
+	background-color:rgb(255,255,255);
+	margin:50px auto 0px auto;
+	width:900px;
+	height:640px;
+	-webkit-box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+	-moz-box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+	-box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+	border:4px solid black;
+}
+
+#canvas{
+	margin:0px auto 0px auto;
+	border-top:2px solid gray;
+	border-bottom:2px solid gray;
+}
+
+#controls{
+	font-size:16px;
+	font-weight:bold;
+	height:40px;
+}
+
+#animateButton {
+	vertical-align: 10px;
+	margin-top:10px;
+	margin-left:10px;
+}
+#frameRate {
+	float:right;
+	margin-right:20px;
+}
+
+
