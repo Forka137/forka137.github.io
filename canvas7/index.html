@@ -15,8 +15,20 @@
 				<div id="speedControl">
 					<p>Velocidad</p>
 					<output id="speedOutput">1.0</output>
-					<input id="speedSlider" type="range"
+					<input id="speedSlider" class ="slider" type="range"
 						min= "-5.0" max="5.0" step="0.1" value="1.0"/>
+				</div>
+				<div class="sizeControl">
+					<p>Largo R2</p>
+					<output id="r2Output">180</output>
+					<input id="r2Slider" class ="slider" type="range"
+						min= "20" max="250" step="10" value="180"/>
+				</div>
+				<div class="sizeControl">
+					<p>Largo R3</p>
+					<output id="r3Output">300</output>
+					<input id="r3Slider" class ="slider" type="range"
+						min= "100" max="350" step="10" value="300"/>
 				</div>
 				<p id="frameRate">137 fps</p>
 			</div>

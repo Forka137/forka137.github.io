@@ -47,5 +47,12 @@ p{
 	float:left;
 	margin-left:20px;
 }
+.sizeControl{
+	float:left;
+	margin-left:20px;
+}
+.slider{
+	width:100px;
+}
 
 
