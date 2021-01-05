@@ -85,12 +85,13 @@ function drawPistonBase() {
 	context.shadowOffsetY = 2;
 	context.shadowBlur = 4;
 	context.lineWidth = 2;
-	context.rect(startX - r2 + r3-50, startY - r4 + rectH/2 + 2, r2+r3, r4 - rectH/2);
+	context.rect(startX - r2 + r3-10, startY - r4 + rectH/2 + 2, r2+r3-100, r4 - rectH/2);
 	context.lineWidth = 2;
 	context.stroke();
 	context.fillStyle = 'linen';
-	context.fillRect(startX - r2 + r3-50, startY - r4 + rectH/2 + 2, r2+r3, r4 - rectH/2);
+	context.fillRect(startX - r2 + r3-10, startY - r4 + rectH/2 + 2, r2+r3-100, r4 - rectH/2);
 	context.restore();
+	//los -10 y -100 de los rectángulos son solo ajustes al ojo para que quede mejor
 }
 
 function drawPiston(){
