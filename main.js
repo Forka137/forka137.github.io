@@ -18,21 +18,21 @@ document.addEventListener("DOMContentLoaded", function(event){
     easing: "easeOutExpo",
     duration: 950,
     delay: (el, i) => 137*i
-  }).add({
+  },'-=800').add({
     targets: '#barra_menu',
     scale: [5,1],
     opacity: [0,1],
     translateZ: 0,
     easing: "easeOutExpo",
     duration: 950
-  }).add({
+  },'-=600').add({
     targets: '.menu_unit',
     scale: [5,1],
     opacity: [0,1],
     translateZ: 0,
     easing: "easeOutExpo",
     duration: 1500
-  });
+  },'-=500');
 }); //dom loaded content
 
 

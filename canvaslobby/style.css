@@ -1,0 +1,90 @@
+body{
+	font-family:Helvetica, Arial, sans-serif;
+	background-color:rgb(54,57,62);		/*color de fondo de discord jz */
+	margin:0px;
+	min-width:1000px;
+}
+h1{
+	color:rgb(252, 148, 3);
+	display: block;
+    font-size: 2em;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    margin:10px 10px 10px 10px;
+    font-weight: bold;
+}
+
+p{
+	display: block;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+ul {
+    display: block;
+    list-style-type: none;
+    margin-block-start: 2em;
+    margin-block-end: 2em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+}
+
+li{
+    display:table;
+    margin:0px auto 0px auto;
+    color:rgb(190, 190, 190);
+    font-size:20px;
+    margin-top:10px;
+    cursor:pointer;
+}
+
+.headerBlock{
+	float:left;
+	height:60px;
+	border-right:solid black;
+	border-width:2px;
+	width:300px;
+}
+
+#header{
+	border-bottom:solid black;
+	border-width:2px;
+	height:60px;
+}
+
+#listBlock{
+	float:left;
+	border-bottom:solid black;
+	border-right:solid black;
+	border-width:2px;
+	width:300px;
+	/*height:500px;*/
+}
+
+#firma{
+	float:right;
+	margin-right:0px;
+	width:200px;
+}
+
+#firma h1{
+	color:inherit;
+	color:rgb(217, 217, 217);
+	cursor:pointer;
+}
+#canvasBlock{
+	float:left;
+	/*border:solid black;
+	border-width:1px;*/
+	margin:70px auto auto 200px;
+}
+a{
+	color:inherit;
+	text-decoration: inherit;
+	/*sin la linea _ */
+}

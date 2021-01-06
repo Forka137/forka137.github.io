@@ -1,25 +1,44 @@
 body{
 	font-family:Helvetica, Arial, sans-serif;
 	background-color:rgb(54,57,62);		/*color de fondo de discord jz */
+	margin:0px;
 }
 #gamebox{
 	background-color:rgb(255,255,255);
-	margin:50px auto 0px auto;
 	width:800px;
 	height:700px;
 }
 
 #canvas{
-	margin:48px auto 0px auto;
+	margin:0px auto 0px auto;
+	cursor: pointer;
 	border-top:2px solid gray;
 	border-bottom:2px solid gray;
-	/*width:800px;
-	height:600px;*/
+}
+
+#controls{
+	padding:9px;
+	font-size:16px;
+	font-weight:bold;
+	line-height: 2;
+}
+
+#guideWireCheckbox{
+	height: 22px;
+	width: 22px;
+	margin-bottom:0px;
+}
+#eraseAllButton{
+	margin-top:20px;
+	float:right;
+}
+.text{
+	margin-left:10px;
 }
 /* los límites del css hacen que el canvas se escale en vez de cambiar de tamaño 
 por lo tanto se debe definir width="800" height="600" dentro del html*/
 
 /*al añadirle 2 bordes de 2 px ahora la ventana es de 800x604
-por lo tnato cambie el margin a 48px */
+por lo tanto cambie el margin a 48px */
 
 

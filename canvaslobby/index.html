@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>simple clock</title>
+		<title>Todos mis canvas</title>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=0.5 maximum-scale=1.0" />
         <meta http-equiv="X-UA-Compatible"content="ie=edge" />
@@ -9,8 +9,23 @@
         <link rel="shortcut icon" href="joystick2.ico" />
 	</head>
 	<body>
-		<div id="gamebox"> 
-			<canvas id="canvas" width="800" height="600"></canvas>
+		<div id="header">
+			<div class="headerBlock"><h1>Canvas de HTML5</h1></div>
+			<div class="headerBlock" id="firma"><h1><a href="../">Forka137</a></h1></div>
+		</div>
+		<div id="listBlock">
+			<ul>
+				<li class="listaSelect">Reloj</li>
+				<li class="listaSelect">Pizarra con elásticos</li>
+				<li class="listaSelect">Polígonos</li>
+				<li class="listaSelect">Entrada de Texto</li>
+				<li class="listaSelect">Foto zoom</li>
+				<li class="listaSelect">Primera animación</li>
+				<li class="listaSelect">Biela-manivela-pistón</li>
+			</ul>
+		</div>
+		<div id="canvasBlock">
+			<iframe id="ventana" src="canvas/index.html" scrolling="no"></iframe>
 		</div>
 	<script src="../lib/anime.min.js"></script>
 	<script src="app.js"></script>	

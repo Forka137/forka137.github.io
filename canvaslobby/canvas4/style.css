@@ -1,16 +1,12 @@
 body{
 	font-family:Helvetica, Arial, sans-serif;
 	background-color:rgb(54,57,62);		/*color de fondo de discord jz */
+	margin:0px;
 }
 #gamebox{
 	background-color:rgb(255,255,255);
-	margin:50px auto 0px auto;
 	width:800px;
 	height:700px;
-	-webkit-box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
-	-moz-box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
-	-box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
-	border:4px solid black;
 }
 
 #canvas{
@@ -19,24 +15,14 @@ body{
 	border-top:2px solid gray;
 	border-bottom:2px solid gray;
 }
-
 #controls{
 	padding:9px;
 	font-size:16px;
 	font-weight:bold;
+	line-height: 2;
 }
-
-#guideWireCheckbox{
-	height: 22px;
-	width: 22px;
-	margin-bottom:0px;
-}
-#eraseAllButton{
-	margin-top:0px;
-	float:right;
-}
-#grid{
-	margin-left:30px;
+.text{
+	margin-left:10px;
 }
 /* los límites del css hacen que el canvas se escale en vez de cambiar de tamaño 
 por lo tanto se debe definir width="800" height="600" dentro del html*/
