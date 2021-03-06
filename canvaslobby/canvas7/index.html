@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Animación BMP</title>
+		<title>Animación BMP FPS variable</title>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=0.5 maximum-scale=1.0" />
         <meta http-equiv="X-UA-Compatible"content="ie=edge" />
@@ -30,7 +30,21 @@
 					<input id="r3Slider" class ="slider" type="range"
 						min= "100" max="350" step="10" value="300"/>
 				</div>
-				<p id="frameRate">137 fps</p>
+				<div id="fpsControl">
+					<p> FPS </p>
+					<input type="radio" class="radioButton" name="fps" value="10" >
+					<label >10</label>
+					<input type="radio" class="radioButton" name="fps" value="15">
+					<label >15</label> 
+					<input type="radio" class="radioButton" name="fps" value="30">
+					<label >30</label> <br>
+					<input type="radio" class="radioButton" name="fps" value="60" checked>
+					<label >60</label>
+					<input type="radio" class="radioButton" name="fps" value="120" >
+					<label >120</label>
+				</div>
+				<p id="frameRate">FPS Max: 137</p>
+				<p id="frameRate2">FPS Reales: 0 </p>
 			</div>
 			<canvas id="canvas" width="900" height="540"></canvas>
 		</div>

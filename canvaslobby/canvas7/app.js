@@ -8,14 +8,20 @@ var canvas = document.getElementById('canvas'),
 	speedOutput = document.getElementById('speedOutput'),
 	r2Output = document.getElementById('r2Output'),
 	r3Output = document.getElementById('r3Output'),
+	radioFps = document.querySelectorAll('input[type=radio][name="fps"]'),
 
+	counter_i = 0,
+	fps_counter = 0,
 	speed = 1.0,
 	paused = true,
 	lengthError = false,
 	lastTime = 0,
+	lastTime_2 = 0,
 	fps = 0,
+	fps_input = 60,
 	animateButton = document.getElementById("animateButton"),
 	frameRate = document.getElementById("frameRate"),
+	frameRate_2 = document.getElementById("frameRate2"),
 	points = [],
 	startX = 250,
 	startY = 300,
@@ -45,6 +51,8 @@ function updatePoints() {
 	points[2].x = points[1].x + r3*Math.cos(theta3);
 	points[2].y = points[1].y - r3*Math.sin(theta3);
 }
+//la razón por la cual se resta en la componente y
+//es por que el eje Y es positivo hacia abajo
 
 function evaluateVariables(){
 	theta3 = Math.asin((r4 - r2*Math.sin(theta2))/r3);
@@ -56,7 +64,7 @@ function evaluateVariables(){
 	}
 }
 
-function calculateFps() {
+function calculateFpsMax() {
 	var now = new Date().getTime();
 	fps = 1000 / (now - lastTime);
 
@@ -80,6 +88,8 @@ function drawLines() {
 function drawPistonBase() {
 	//rectángulo base
 	context.save();
+	context.beginPath(); //esto soluciona el error del rastro que quedaba detrás que raro
+	//supongo que todos los dibujos deben empezar con un beginPath, o sino queda algo detrás
 	context.shadowColor = 'rgba(0,0,0,0.5)';
 	context.shadowOffsetX = 2;
 	context.shadowOffsetY = 2;
@@ -114,7 +124,7 @@ function drawjoints() {
 	context.beginPath();
 	context.arc(points[i].x, points[i].y, jointRadius, 0, Math.PI*2, true);
 	context.fill();
-	}
+	} 
 	context.restore();
 }
 
@@ -144,12 +154,21 @@ function drawFps() {
 //mejor la función setInterval para obtener su valor.
 function updateFps() {
 	if (!paused){
-		frameRate.innerText = fps.toFixed(1) + " fps";	
+		frameRate.innerText = "FPS Max: " + fps.toFixed(1);	
 	} else {
-		frameRate.innerText = "0 fps";
+		frameRate.innerText = "FPS Max: 0";	
 	}
-	console.log(r2+r3);
+	//console.log(r2+r3);
 }
+
+function updateRealFps() {
+	if (!paused){
+		frameRate_2.innerText = "FPS Reales: " + fps_2.toFixed(2);	
+	} else {
+		frameRate_2.innerText = "FPS Reales: 0";	
+	}
+}
+
 
 function updateText () {
 	text = parseFloat(speed).toFixed(1);
@@ -164,25 +183,45 @@ function windowToCanvas(x, y) {
 			y: y - bbox.top  * (canvas.height / bbox.height) };
 }
 
-function animate(time) {
+function animate() {
 	if (!paused) {
+		fps_counter += 1;
 		//context.clearRect(0,0, canvas.width, canvas.height);
-		context.fillRect(0,0, canvas.width, canvas.height);
-		if (theta2 > 16*Math.PI){
+		if (theta2 > 16*Math.PI){						 	
 			theta2 = 0;
+			//esto solo es para evitar que theta2 se vaya al infinito
 		} else {
 			theta2 += (Math.PI/180)*speed;
+			//esto es el delta posición
 		}
-		evaluateVariables();
-		updatePoints();
-
-		drawPistonBase();
-		drawPiston();
-		drawLines();
-		drawjoints();
-
-		calculateFps();
 		requestAnimationFrame(animate);
+		calculateFpsMax();
+		//esto calcula los fps máximos segun el navegador
+		// animación, dibujos, texto, etc
+
+		var now_2 = new Date().getTime();
+		fps_2 = 1000 / (now_2 - lastTime_2);
+
+		if (fps_counter > (60/fps_input)-1){
+			fps_counter = 0;
+			counter_i += 1;
+			context.fillRect(0,0, canvas.width, canvas.height);
+			evaluateVariables();
+			updatePoints();
+
+			drawPistonBase();
+			drawPiston();
+			drawLines();
+			drawjoints();
+			lastTime_2 = now_2;
+
+			if (counter_i > fps_input){
+				updateRealFps();
+				counter_i = 0;
+			}
+		}
+		//console.log(`fps max: ${fps} fps actual:${fps_2}`);
+		
 	}
 }
 
@@ -217,6 +256,17 @@ animateButton.onclick = function (e) {
 speedSlider.oninput = function(e) {
 	speed = parseFloat(e.target.value);
 	updateText();
+}
+
+radioFps.forEach(radio => radio.addEventListener('change', function () {
+	fps_input = parseFloat(radio.value);
+	updateText();
+}));
+	
+radioFps.onchange = function(e) {
+	fps_input = parseFloat(e.target.value);
+	updateText();
+	console.log(fps_input);
 }
 
 r2Slider.oninput = function(e) {
