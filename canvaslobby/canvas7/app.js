@@ -5,20 +5,23 @@ var canvas = document.getElementById('canvas'),
 	speedSlider = document.getElementById('speedSlider'),
 	r2Slider = document.getElementById('r2Slider'),
 	r3Slider = document.getElementById('r3Slider'),
+	fpsSlider = document.getElementById('fpsSlider'),
 	speedOutput = document.getElementById('speedOutput'),
 	r2Output = document.getElementById('r2Output'),
 	r3Output = document.getElementById('r3Output'),
-	radioFps = document.querySelectorAll('input[type=radio][name="fps"]'),
 
 	counter_i = 0,
-	fps_counter = 0,
-	speed = 1.0,
+	delta = 0.16,
+	speed = 1,
 	paused = true,
 	lengthError = false,
 	lastTime = 0,
+	now_2 = 0,
 	lastTime_2 = 0,
 	fps = 0,
-	fps_input = 60,
+	fps_input = 1,
+	fps_counter = 1,
+	fps_actual = 0,
 	animateButton = document.getElementById("animateButton"),
 	frameRate = document.getElementById("frameRate"),
 	frameRate_2 = document.getElementById("frameRate2"),
@@ -69,6 +72,10 @@ function calculateFpsMax() {
 	fps = 1000 / (now - lastTime);
 
 	lastTime = now;
+
+	if (fps_2 < 300){
+	fps_actual = fps_input*fps_2;
+	}
 }
 
 function drawLines() {
@@ -154,27 +161,21 @@ function drawFps() {
 //mejor la función setInterval para obtener su valor.
 function updateFps() {
 	if (!paused){
-		frameRate.innerText = "FPS Max: " + fps.toFixed(1);	
+		frameRate.innerText = "FPS Max: " + fps.toFixed(1);
+		frameRate2.innerText = "FPS Actual: " + fps_actual.toFixed(1);
 	} else {
-		frameRate.innerText = "FPS Max: 0";	
+		frameRate.innerText = "FPS Max: 0";
+		frameRate2.innerText = "FPS Actual: 0";
 	}
 	//console.log(r2+r3);
 }
-
-function updateRealFps() {
-	if (!paused){
-		frameRate_2.innerText = "FPS Reales: " + fps_2.toFixed(2);	
-	} else {
-		frameRate_2.innerText = "FPS Reales: 0";	
-	}
-}
-
 
 function updateText () {
 	text = parseFloat(speed).toFixed(1);
 	speedOutput.innerText = text;
 	r2Output.innerText = r2;
 	r3Output.innerText = r3;
+	//fpsOutput.innerText = fps_input;
 }
 
 function windowToCanvas(x, y) { 
@@ -185,26 +186,23 @@ function windowToCanvas(x, y) {
 
 function animate() {
 	if (!paused) {
-		fps_counter += 1;
+		//esto realiza el movimiento
+		now_2 = new Date().getTime();
+		delta = (now_2 - lastTime_2)/100;
+		fps_2 = 1000 / (now_2 - lastTime_2);
+		
 		//context.clearRect(0,0, canvas.width, canvas.height);
 		if (theta2 > 16*Math.PI){						 	
 			theta2 = 0;
 			//esto solo es para evitar que theta2 se vaya al infinito
 		} else {
-			theta2 += (Math.PI/180)*speed;
-			//esto es el delta posición
+			theta2 += (Math.PI/180)*speed*delta*6.25;
+			//el delta hace que sin importar los fps, el objeto se mueva a la misma velocidad.
 		}
-		requestAnimationFrame(animate);
-		calculateFpsMax();
-		//esto calcula los fps máximos segun el navegador
-		// animación, dibujos, texto, etc
-
-		var now_2 = new Date().getTime();
-		fps_2 = 1000 / (now_2 - lastTime_2);
-
-		if (fps_counter > (60/fps_input)-1){
-			fps_counter = 0;
-			counter_i += 1;
+		//esto realiza el dibujo por frame.
+		//solo se dibuja cuando el fps_counter alcanza el entero siguiente
+		//si no lo alcanza, no se dibuja el frame.
+		if (Math.floor(fps_counter) == counter_i){
 			context.fillRect(0,0, canvas.width, canvas.height);
 			evaluateVariables();
 			updatePoints();
@@ -213,23 +211,33 @@ function animate() {
 			drawPiston();
 			drawLines();
 			drawjoints();
-			lastTime_2 = now_2;
 
-			if (counter_i > fps_input){
-				updateRealFps();
-				counter_i = 0;
-			}
-		}
-		//console.log(`fps max: ${fps} fps actual:${fps_2}`);
-		
-	}
+			counter_i += 1;
+		} 
+
+		if (fps_counter < Math.round(fps_input*fps_2)){
+			//los fps fraccionados se iran sumando hasta que sean menor que la cantidad total indicada
+			//en este caso una fracción de los fps máximos.
+			fps_counter += fps_input;
+
+		} else {
+			// si se alcanza la fracción de frames necesaria, se reinician los contadores.
+			counter_i = 0;
+			fps_counter = 0;
+		}	
+
+	requestAnimationFrame(animate);
+	calculateFpsMax();
+	lastTime_2 = now_2;
+	//console.log(`sum: ${fps_counter}, frame counter: ${counter_i}`);
+	} 
 }
 
 function updateFrame() {
  //actualiza el dibujo en 1 frame
 context.fillStyle = 'rgba(230,230,230,1.0)'
 context.fillRect(0,0, canvas.width, canvas.height);
- evaluateVariables();
+evaluateVariables();
 	points[0] = new Point(startX, startY);
 	points[1] = new Point(startX + r2*Math.cos(theta2),
 						  startY - r2*Math.sin(theta2));
@@ -248,6 +256,7 @@ animateButton.onclick = function (e) {
 	if (paused) {
 		animateButton.value = 'Animar';
 	} else {
+		lastTime_2 = new Date().getTime();
 		requestAnimationFrame(animate);
 		animateButton.value = 'Detener';
 	}
@@ -258,15 +267,9 @@ speedSlider.oninput = function(e) {
 	updateText();
 }
 
-radioFps.forEach(radio => radio.addEventListener('change', function () {
-	fps_input = parseFloat(radio.value);
-	updateText();
-}));
-	
-radioFps.onchange = function(e) {
+fpsSlider.oninput = function(e) {
 	fps_input = parseFloat(e.target.value);
 	updateText();
-	console.log(fps_input);
 }
 
 r2Slider.oninput = function(e) {
