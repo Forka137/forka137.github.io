@@ -107,7 +107,7 @@ function createCircle() {
 			circle.drawApproachCircle(approachCircleRadius - approachSpeed*approachCounter);
 			approachCounter += 1;
 			console.log('se dibuja el approach');
-			console.log(`${approachCircleRadius}, ${approachSpeed}, ${approachCounter}`);
+			//console.log(`${approachCircleRadius}, ${approachSpeed}, ${approachCounter}`);
 
 		} else {
 			circle.drawApproachCircle(circleRadius);
