@@ -36,13 +36,25 @@ var circleObject = function(point, color) {
 		context.save();
 		context.fillStyle = color;
 		context.strokeStyle = 'black';
-
-		context.beginPath();
-		context.arc(this.x, this.y, circleRadius, 0, Math.PI*2, true);
 		context.lineWidth = 8;
 		context.globalAlpha = opacity;
+
+		context.shadowColor = 'rgba(0,0,0,0.5)';
+		context.shadowOffsetX = 2;
+		context.shadowOffsetY = 2;
+		context.shadowBlur = 4;
+
+		//se dibuja primero el contorno
+		context.beginPath();
+		context.arc(this.x, this.y, circleRadius, 0, Math.PI*2, true);
 		context.stroke();
+
+		//luego el llenado pero que solo toque el contorno en 1 pixel
+		context.beginPath();
+		context.shadowColor = 'rgba(0,0,0,0)'; //el fill no debe tener sombra
+		context.arc(this.x, this.y, circleRadius-3, 0, Math.PI*2, true);
 		context.fill();
+		
 		context.restore();
 		this.drawNumber(number, opacity);
 	}
@@ -89,7 +101,7 @@ function createCircle() {
 		ready = false;
 	} else if (!circle.drawn) {
 		
-		if (opacitySpeed*opacityCounter < 1){
+		if (opacitySpeed*opacityCounter < 1) {
 			circle.drawCircle(numberCounter, opacitySpeed*opacityCounter);
 			opacityCounter += 1;
 			console.log('se dibuja el círculo');
@@ -102,12 +114,12 @@ function createCircle() {
 
 	} else if (!circle.done) {
 
-		if (approachCircleRadius - approachSpeed*approachCounter > circleRadius){
+		if (approachCircleRadius - approachSpeed*approachCounter > circleRadius) {
 			circle.drawCircle(numberCounter, 1);
 			circle.drawApproachCircle(approachCircleRadius - approachSpeed*approachCounter);
 			approachCounter += 1;
 			console.log('se dibuja el approach');
-			//console.log(`${approachCircleRadius}, ${approachSpeed}, ${approachCounter}`);
+			console.log(`${approachCircleRadius}, ${approachSpeed}, ${approachCounter}`);
 
 		} else {
 			circle.drawApproachCircle(circleRadius);
