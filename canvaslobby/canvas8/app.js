@@ -34,7 +34,7 @@ var circleObject = function(point, color) {
 
 	this.drawCircle = function(number, opacity) {
 		context.save();
-		context.fillStyle = color;
+		context.fillStyle = this.color;
 		context.strokeStyle = 'black';
 		context.lineWidth = 8;
 		context.globalAlpha = opacity;
@@ -50,6 +50,7 @@ var circleObject = function(point, color) {
 		context.stroke();
 
 		//luego el llenado pero que solo toque el contorno en 1 pixel
+		//si se tocan 1 pixel se ve mejor que si no se tocan nada (quedan pixeles vacios)
 		context.beginPath();
 		context.shadowColor = 'rgba(0,0,0,0)'; //el fill no debe tener sombra
 		context.arc(this.x, this.y, circleRadius-3, 0, Math.PI*2, true);
@@ -74,10 +75,10 @@ var circleObject = function(point, color) {
 
 	this.drawApproachCircle = function(radius) {
 		context.save();
-		context.strokeStyle = 'black';
+		context.strokeStyle = this.color;
 		context.beginPath();
 		context.arc(this.x, this.y, radius, 0, Math.PI*2, true);
-		context.lineWidth = 1;
+		context.lineWidth = 2;
 		context.stroke();
 		context.restore();
 	}
@@ -119,7 +120,7 @@ function createCircle() {
 			circle.drawApproachCircle(approachCircleRadius - approachSpeed*approachCounter);
 			approachCounter += 1;
 			console.log('se dibuja el approach');
-			console.log(`${approachCircleRadius}, ${approachSpeed}, ${approachCounter}`);
+			//console.log(`${approachCircleRadius}, ${approachSpeed}, ${approachCounter}`);
 
 		} else {
 			circle.drawApproachCircle(circleRadius);
