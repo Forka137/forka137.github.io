@@ -52,6 +52,16 @@ h3{
 	font-size: 16px;
 }
 
+.nav-links a:hover{
+	color: rgb(255, 255, 255);
+	/*background-color:rgb(239, 239, 245);*/
+}
+
+.nav-links a:active{
+	color: rgb(255, 210, 77);
+	/*background-color:rgb(239, 239, 245);*/
+}
+
 .nav-links li{
 	list-style: none;
 }
@@ -113,14 +123,16 @@ a:link{
 		display: flex;
 		flex-direction: column;
 		justify-content:flex-start;
-		align-items:center;
+		align-items:stretch;
 		width:40%;
 		transform: translateX(100%); /*esconde la barra lateral*/
 		transition: transform 0.5s ease-in;
 	}
 	.nav-links li{
+		display: flex;
+		justify-content:center;
 		opacity: 0;
-		margin-bottom:32px;
+		padding: 16px 0 16px 0px;
 	}
 	.nav-links a{
 		font-size: 20px;
