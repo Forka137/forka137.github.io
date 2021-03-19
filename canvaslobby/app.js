@@ -12,7 +12,8 @@ var //listaSelect = document.getElementsByClassName('listaSelect'),
 				  'canvas5/index.html',
 				  'canvas6/index.html',
 				  'canvas7/index.html',
-				  'canvas8/index.html'];
+				  'canvas8/index.html',
+				  'canvas9/index.html'];
 
 function lightOn(element) {
 	anime.remove(element);	//interrumpe la animación anterior
