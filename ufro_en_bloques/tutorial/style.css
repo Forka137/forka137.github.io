@@ -137,6 +137,9 @@ a:link{
 	margin-bottom:20px;
 	margin-left:20px;
 }
+.alerta{
+	color: #d61e1e;
+}
 /*para mobile ahora hay que hacer esto:*/
 
 @media screen and (max-width:1512px){
