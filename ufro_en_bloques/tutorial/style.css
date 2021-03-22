@@ -25,11 +25,19 @@ p{
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     margin-top:6px;
+    margin-bottom:30px;
     /*padding:4px;*/
+    clear:left;
 }
 
 h3{
 	color: rgb(226, 226, 226);
+	margin-top:20px;
+}
+
+h2{
+	color: rgb(226, 226, 226);
+	font-size:18px;
 	margin-top:20px;
 }
 
@@ -103,6 +111,32 @@ a:link{
 	text-decoration:none;
 }
 
+#oficial{
+	color: #32a852;
+}
+
+#fenix{
+	color: #ed900e;
+}
+
+#tlauncher{
+	color: #0e81ed;
+}
+
+.imgGrande{
+	float:left;
+	max-width:800px;
+	margin-bottom:20px;
+	margin-left:20px;
+}
+
+.imgChica{
+	float:left;
+	max-width:500px;
+	max-height:600px;
+	margin-bottom:20px;
+	margin-left:20px;
+}
 /*para mobile ahora hay que hacer esto:*/
 
 @media screen and (max-width:1512px){
@@ -140,6 +174,15 @@ a:link{
 	}
 	.burger-button{
 		display:block;
+	}
+	.imgGrande{
+		margin-left:0px;
+		max-width:400px;
+	}
+	.imgChica{
+		margin-left:0px;
+		max-width:400px;
+		max-height:600px;
 	}
 }
 
