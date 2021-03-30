@@ -33,12 +33,15 @@ p{
 h3{
 	color: rgb(226, 226, 226);
 	margin-top:20px;
+	margin-bottom:20px;
 }
 
-h2{
+h2{	
+	display: flex;
+	justify-content:center;
 	color: rgb(226, 226, 226);
 	font-size:18px;
-	margin-top:20px;
+	margin-top:10px;
 }
 
 .logo{
@@ -88,10 +91,16 @@ h2{
 }
 
 #description{
-	margin:20px;
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items:stretch;
+	margin:10px;
 }
 
 .titulo{
+	display: flex;
+	justify-content:center;
 	font-size:22px;
 	border-bottom:2px solid gray;
 }
@@ -99,6 +108,13 @@ h2{
 .textoAbout{
 	font-size:18px;
 	line-height : 25px;
+	text-align: left;
+	max-width:900px;
+}
+
+.textWrapper{
+	display:flex;
+	justify-content:center;
 }
 
 a:visited{
@@ -124,22 +140,29 @@ a:link{
 }
 
 .imgGrande{
-	float:left;
 	max-width:800px;
 	margin-bottom:20px;
-	margin-left:20px;
+	margin-left:auto;
+	margin-right:auto;
 }
 
 .imgChica{
-	float:left;
-	max-width:500px;
+	max-width:600px;
 	max-height:600px;
 	margin-bottom:20px;
-	margin-left:20px;
+	margin-left:auto;
+	margin-right:auto;
 }
+
+.imageWrapper{
+	margin-left:auto;
+	margin-right:auto;
+}
+
 .alerta{
 	color: #d61e1e;
 }
+
 /*para mobile ahora hay que hacer esto:*/
 
 @media screen and (max-width:1512px){
@@ -177,13 +200,13 @@ a:link{
 	}
 	.burger-button{
 		display:block;
+		position:absolute;
+		margin-left:85%;
 	}
 	.imgGrande{
-		margin-left:0px;
 		max-width:400px;
 	}
 	.imgChica{
-		margin-left:0px;
 		max-width:400px;
 		max-height:600px;
 	}

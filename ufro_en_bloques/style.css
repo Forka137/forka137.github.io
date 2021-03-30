@@ -121,6 +121,8 @@ p{
 	}
 	.burger-button{
 		display:block;
+		position:absolute;
+		margin-left:85%;
 	}
 }
 
