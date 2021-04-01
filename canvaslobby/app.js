@@ -13,7 +13,8 @@ var //listaSelect = document.getElementsByClassName('listaSelect'),
 				  'canvas6/index.html',
 				  'canvas7/index.html',
 				  'canvas8/index.html',
-				  'canvas9/index.html'];
+				  'canvas9/index.html',
+				  'canvas10/index.html'];
 
 function lightOn(element) {
 	anime.remove(element);	//interrumpe la animación anterior
