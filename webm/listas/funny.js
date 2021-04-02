@@ -1,4 +1,4 @@
-export const urlFunnyVideo = [
+export const urlVideo = [
 "https://cdn.discordapp.com/attachments/650603323296317461/788903437751287898/1545603126309electric_car_ye.webm",
 "https://cdn.discordapp.com/attachments/650603323296317461/788903520027803658/1549184775866gymbro_smash.webm",
 "https://cdn.discordapp.com/attachments/650603323296317461/788903720079196180/gatochoro.mp4",
@@ -7,7 +7,7 @@ export const urlFunnyVideo = [
 "https://cdn.discordapp.com/attachments/650603323296317461/788907718638960670/longtimelonglong.webm"
 ];
 
-export const urlFunnyThumbnail = [
+export const urlThumbnail = [
 "https://cdn.discordapp.com/attachments/786100091105706014/788905133786398750/01fillme.jpg",
 "https://cdn.discordapp.com/attachments/786100091105706014/788905133954170880/02gymbrosmash.jpg",
 "https://cdn.discordapp.com/attachments/786100091105706014/788905134843101244/03gatochoro.jpg",
@@ -16,7 +16,7 @@ export const urlFunnyThumbnail = [
 "https://cdn.discordapp.com/attachments/786100091105706014/788908025700286514/06gobacktohk.jpg"
 ];
 
-export const funnyText = [
+export const pageText = [
 "yeah fill me baby",
 "level 100 vs level 1",
 "dog wants revenge",
@@ -25,7 +25,7 @@ export const funnyText = [
 "i'll take you back to hongkong"
 ];
 
-export const funnyCode =[
+export const pageCode =[
 "fun1",
 "fun2",
 "fun3",

@@ -1,4 +1,4 @@
-export const urlAnime_editVideo = [
+export const urlVideo = [
 "https://cdn.discordapp.com/attachments/650603323296317461/786875081913401385/1605351234865_dozing_off.webm",
 "https://cdn.discordapp.com/attachments/650603323296317461/786875137404174336/1583736281463_multiplefaces.webm",
 "https://cdn.discordapp.com/attachments/650603323296317461/786875178202169354/AWOOOO.webm",
@@ -11,7 +11,7 @@ export const urlAnime_editVideo = [
 "https://cdn.discordapp.com/attachments/650603323296317461/786875544779620372/1604055703888_you_know_eva.webm"
 ];
 
-export const urlAnime_editThumbnail = [
+export const urlThumbnail = [
 "https://cdn.discordapp.com/attachments/786100091105706014/786876699928428584/01dozingoff.jpg",
 "https://cdn.discordapp.com/attachments/786100091105706014/786876701732896808/02multiplefaces.jpg",
 "https://cdn.discordapp.com/attachments/786100091105706014/786876703208243250/03awooo.jpg",
@@ -24,7 +24,7 @@ export const urlAnime_editThumbnail = [
 "https://cdn.discordapp.com/attachments/786100091105706014/786876713115713556/10youknoweva.jpg"
 ];
 
-export const anime_editText = [
+export const pageText = [
 "me in class",
 "so many waifus, i mean faces",
 "awoooo...",
@@ -37,7 +37,7 @@ export const anime_editText = [
 "i love evangelion"
 ];
 
-export const anime_editCode =[
+export const pageCode =[
 "anmedt1",
 "anmedt2",
 "anmedt3",

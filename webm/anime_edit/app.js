@@ -1,28 +1,28 @@
-import {urlAnime_editVideo} from "../listas/anime_edit.js";
-import {urlAnime_editThumbnail} from "../listas/anime_edit.js";
-import {anime_editText} from "../listas/anime_edit.js";
-import {anime_editCode} from "../listas/anime_edit.js";
+import {urlVideo} from "../listas/anime_edit.js";
+import {urlThumbnail} from "../listas/anime_edit.js";
+import {pageText} from "../listas/anime_edit.js";
+import {pageCode} from "../listas/anime_edit.js";
 
-const darkMode = document.querySelector('#darkLightMode');			//si no es declarado constante, deja de ser botón inmediatamente
-var modeText = document.getElementById('darkLightMode');
-var borderHead = document.getElementsByClassName("video_header");
+const pageCodeString = 'anime_edit';
 
-var lightModeName = "oscuro "
+var darkMode = document.getElementById('darkLightMode'),			//si no es declarado constante, deja de ser botón inmediatamente
+	borderHead = document.getElementsByClassName("video_header"),
+	lightModeName = "oscuro ";
 
-const colorBlanco = "rgb(255,255,255)";
-const colorGris = "rgb(100,100,100)";
-const colorNegro = "rgb(0,0,0)";
-const colorDiscord = "rgb(54,57,62)";
-const colorHeaderL = "rgb(220,220,220)";
-const colorContent = "rgb(60,60,60)";
-const colorContentW = "rgb(245,245,245)";
+const colorBlanco = "rgb(255,255,255)",
+	  colorGris = "rgb(100,100,100)",
+	  colorNegro = "rgb(0,0,0)",
+	  colorDiscord = "rgb(54,57,62)",
+	  colorHeaderL = "rgb(220,220,220)",
+	  colorContent = "rgb(60,60,60)",
+	  colorContentW = "rgb(245,245,245)";
 
-var colorValue = colorDiscord;
-var colorValue2 = colorGris;
-var colorValue3 = colorBlanco;
-var colorValue4 = colorContent;
+var colorValue = colorDiscord,
+	colorValue2 = colorGris,
+	colorValue3 = colorBlanco,
+	colorValue4 = colorContent,
 
-var light = false;
+	light = false;
 
 darkMode.addEventListener("click", () => {
 
@@ -49,7 +49,7 @@ darkMode.addEventListener("click", () => {
     	}
 
 	}
-	modeText.textContent = "Fondo "+lightModeName;
+	darkMode.textContent = "Fondo "+lightModeName;
 	anime.timeline({
 		targets: "body",
 		loop: false,
@@ -69,7 +69,7 @@ darkMode.addEventListener("click", () => {
 		backgroundColor: colorValue4,
 		easing: "easeOutExpo"
 	},-100).add({
-		targets: "h2,h3,li,a:link, #darkLightMode, .shareVideo, .closeVideo",
+		targets: "h2,h3,#goToTheTop,a:link, #darkLightMode, .shareVideo, .closeVideo",
 		loop: false,
 		duration: 500,
 		color: colorValue3,
@@ -77,8 +77,8 @@ darkMode.addEventListener("click", () => {
 	},-200);													//offset de animación, en este caso quiero que las letras se cambien de color un poco antes.
 });
 
-const toTheTop = document.querySelector('#goToTheTop');
-toTheTop.addEventListener("click", () => {						//función para ir arriba.
+var toTheTop = document.getElementById("goToTheTop");
+toTheTop.addEventListener("click", (e) => {						//función para ir arriba.
 	topFunction();
 });
 
@@ -91,11 +91,11 @@ function webmVideo(vUrl,tUrl,text,number, code){
 	this.name = code;
 	this.addToPage = function(previousElement){
 		previousElement.insertAdjacentHTML("afterend",` 
-			<div id="anime_edit${this.elementNumber}">
+			<div id="${pageCodeString}${this.elementNumber}">
 			<div class="video_header">
 				<h3>${this.caption}</h3>
-				<div id="closeVideo${this.elementNumber}" class="h3 closeVideo"><a href="#">Cerrar<a/></div>
-				<div id="shareVideo${this.elementNumber}" class="shareVideo"><a href="#">Compartir<a/></div>
+				<div id="closeVideo${this.elementNumber}" class="h3 closeVideo"><a>Cerrar<a/></div>
+				<div id="shareVideo${this.elementNumber}" class="shareVideo"><a>Compartir<a/></div>
 			</div>
 			<img id="thumb${this.elementNumber}" class="thumbnail" src=${this.thumbUrl} loading="lazy"/>
 			<div id="videoWebm${this.elementNumber}"></div>
@@ -130,18 +130,18 @@ var isArray = Array.isArray || function(value) {
 };
 
 //randomiza los videos
-shuffleArray(urlAnime_editVideo, urlAnime_editThumbnail, anime_editText, anime_editCode);
+shuffleArray(urlVideo, urlThumbnail, pageText, pageCode);
 
 //crea todas las thumbnail y  los objetos webmVideo
 var video = [];
-for (let i = 0; i < urlAnime_editVideo.length; i++) {	
-	let previousElement = document.getElementById(`anime_edit${i}`);
-	video[i] = new webmVideo(urlAnime_editVideo[i], urlAnime_editThumbnail[i], anime_editText[i],i+1, anime_editCode[i]);
+for (let i = 0; i < urlVideo.length; i++) {	
+	let previousElement = document.getElementById(`${pageCodeString}${i}`);
+	video[i] = new webmVideo(urlVideo[i], urlThumbnail[i], pageText[i],i+1, pageCode[i]);
 	video[i].addToPage(previousElement);
 	}
 
 //crea todos los listeners
-for (let i = 0; i < urlAnime_editVideo.length; i++) {												//al cambiar var i a let i, se solucionó el problema
+for (let i = 0; i < urlVideo.length; i++) {												//al cambiar var i a let i, se solucionó el problema
 	let el = document.getElementById(`thumb${i+1}`);		//los thumb empiezan en 1			//de más abajo que console.log marcaba siempre 7
 	let el2 = document.getElementById(`closeVideo${i+1}`);	//los closeVideo también
 	let el3 = document.getElementById(`shareVideo${i+1}`);
@@ -196,7 +196,7 @@ function shuffleArray() {
 }
 
 
-//sobre el anime_editCode[i];
+//sobre el pageCode[i];
 //sucede que quiero que todos los videos tengan su página disponible para compartir más facilmente
 //entonces necesito darles un código único de manera que siempre el objeto pueda tener una referencia a dicha página html
 //eso es todo

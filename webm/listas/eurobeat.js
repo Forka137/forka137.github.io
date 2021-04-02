@@ -1,4 +1,4 @@
-export const urlEurobeatVideo = [
+export const urlVideo = [
 "https://cdn.discordapp.com/attachments/650597613367853072/650626804725579786/1574638880356_welcome_to_the_night.webm",
 "https://cdn.discordapp.com/attachments/650603323296317461/679296704738230282/1571722247068_killing_my_love.webm",
 "https://cdn.discordapp.com/attachments/650597613367853072/650608155910471701/1477760125532.webm",
@@ -17,7 +17,7 @@ export const urlEurobeatVideo = [
 "https://cdn.discordapp.com/attachments/650603323296317461/786865445847695370/1581393287352_night_circle_drift.webm"
 ];
 
-export const urlEurobeatThumbnail = [
+export const urlThumbnail = [
 "https://cdn.discordapp.com/attachments/786100091105706014/786545207902470164/cap_1574638880356_welcome_to_the_night_00_00_17_01.jpg",
 "https://cdn.discordapp.com/attachments/786100091105706014/786545205268185128/cap_1571722247068_irohazaka_00_00_00_01.jpg",
 "https://cdn.discordapp.com/attachments/786100091105706014/786545201878401024/cap_1477760125532_holy_drift_00_00_00_01.jpg",
@@ -36,7 +36,7 @@ export const urlEurobeatThumbnail = [
 "https://cdn.discordapp.com/attachments/786100091105706014/786866023839694858/cap_1581393287352_night_circle_drift_00_00_03_01.jpg"
 ];
 
-export const eurobeatText = [
+export const pageText = [
 "overtaking in the night",
 "irohazaka downhill",
 "holy drift",
@@ -55,7 +55,7 @@ export const eurobeatText = [
 "drifting around"
 ];
 
-export const eurobeatCode =[
+export const pageCode =[
 "eurbt1",
 "eurbt2",
 "eurbt3",

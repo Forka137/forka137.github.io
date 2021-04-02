@@ -1,34 +1,34 @@
-import {urlEurobeatVideo} from "../listas/eurobeat.js";
-import {urlEurobeatThumbnail} from "../listas/eurobeat.js";
-import {eurobeatText} from "../listas/eurobeat.js";
-import {eurobeatCode} from "../listas/eurobeat.js";
+import {urlVideo} from "../listas/eurobeat.js";
+import {urlThumbnail} from "../listas/eurobeat.js";
+import {pageText} from "../listas/eurobeat.js";
+import {pageCode} from "../listas/eurobeat.js";
 
-const darkMode = document.querySelector('#darkLightMode');			//si no es declarado constante, deja de ser botón inmediatamente
-var modeText = document.getElementById('darkLightMode');
-var borderHead = document.getElementsByClassName("video_header");
+const pageCodeString = 'eurobeat';
 
-var lightModeName = "oscuro "
+var darkMode = document.getElementById('darkLightMode'),			//si no es declarado constante, deja de ser botón inmediatamente
+	borderHead = document.getElementsByClassName("video_header"),
+	lightModeName = "oscuro ";
 
-const colorBlanco = "rgb(255,255,255)";
-const colorGris = "rgb(100,100,100)";
-const colorNegro = "rgb(0,0,0)";
-const colorDiscord = "rgb(54,57,62)";
-const colorHeaderL = "rgb(220,220,220)";
-const colorContent = "rgb(60,60,60)";
-const colorContentW = "rgb(245,245,245)";
+const colorBlanco = "rgb(255,255,255)",
+	  colorGris = "rgb(100,100,100)",
+	  colorNegro = "rgb(0,0,0)",
+	  colorDiscord = "rgb(54,57,62)",
+	  colorHeaderL = "rgb(220,220,220)",
+	  colorContent = "rgb(60,60,60)",
+	  colorContentW = "rgb(245,245,245)";
 
-var colorValue = colorDiscord;
-var colorValue2 = colorGris;
-var colorValue3 = colorBlanco;
-var colorValue4 = colorContent;
+var colorValue = colorDiscord,
+	colorValue2 = colorGris,
+	colorValue3 = colorBlanco,
+	colorValue4 = colorContent,
 
-var light = false;
+	light = false;
 
 darkMode.addEventListener("click", () => {
 
 	if (light){													//estos if-else asignan los colores según la posición del interruptor de light or dark mode.
 		light = false;
-		lightModeName = "claro ";
+		lightModeName = "claro";
 		colorValue = colorDiscord;
 		colorValue2 = colorGris;
 		colorValue3 = colorBlanco;
@@ -39,7 +39,7 @@ darkMode.addEventListener("click", () => {
 		
 	}else{														//también "parchan" el cambio de borde que no se puede hacer con anime js, oops.
 		light = true;
-		lightModeName = "oscuro ";
+		lightModeName = "oscuro";
 		colorValue = colorBlanco;
 		colorValue2 = colorHeaderL;
 		colorValue3 = colorNegro;
@@ -49,7 +49,7 @@ darkMode.addEventListener("click", () => {
     	}
 
 	}
-	modeText.textContent = "Fondo "+lightModeName;
+	darkMode.textContent = "Fondo "+lightModeName;
 	anime.timeline({
 		targets: "body",
 		loop: false,
@@ -69,21 +69,21 @@ darkMode.addEventListener("click", () => {
 		backgroundColor: colorValue4,
 		easing: "easeOutExpo"
 	},-100).add({
-		targets: "h2,h3,li,a:link, #darkLightMode, .shareVideo, .closeVideo",
+		targets: "h2,h3,#goToTheTop,a:link, #darkLightMode, .shareVideo, .closeVideo",
 		loop: false,
 		duration: 500,
 		color: colorValue3,
 		easing: "easeOutExpo"
-	},-200);														//offset de animación, en este caso quiero que las letras se cambien de color un poco antes.
+	},-200);													//offset de animación, en este caso quiero que las letras se cambien de color un poco antes.
 });
 
-const toTheTop = document.querySelector('#goToTheTop');
-toTheTop.addEventListener("click", () => {						//función para ir arriba.
+var toTheTop = document.getElementById("goToTheTop");
+toTheTop.addEventListener("click", (e) => {						//función para ir arriba.
 	topFunction();
 });
 
 //objeto tipo webm
-function webmVideo(vUrl,tUrl,text,number,code){
+function webmVideo(vUrl,tUrl,text,number, code){
 	this.videoUrl = vUrl;
 	this.thumbUrl = tUrl;
 	this.caption = text;
@@ -91,11 +91,11 @@ function webmVideo(vUrl,tUrl,text,number,code){
 	this.name = code;
 	this.addToPage = function(previousElement){
 		previousElement.insertAdjacentHTML("afterend",` 
-			<div id="eurobeat${this.elementNumber}">
+			<div id="${pageCodeString}${this.elementNumber}">
 			<div class="video_header">
 				<h3>${this.caption}</h3>
-				<div id="closeVideo${this.elementNumber}" class="h3 closeVideo"><a href="#">Cerrar<a/></div>
-				<div id="shareVideo${this.elementNumber}" class="shareVideo"><a href="#">Compartir<a/></div>
+				<div id="closeVideo${this.elementNumber}" class="h3 closeVideo"><a>Cerrar<a/></div>
+				<div id="shareVideo${this.elementNumber}" class="shareVideo"><a>Compartir<a/></div>
 			</div>
 			<img id="thumb${this.elementNumber}" class="thumbnail" src=${this.thumbUrl} loading="lazy"/>
 			<div id="videoWebm${this.elementNumber}"></div>
@@ -109,7 +109,7 @@ function webmVideo(vUrl,tUrl,text,number,code){
 		let close = document.getElementById(`closeVideo${this.elementNumber}`);
 		thumbnail.style.display = 'none';
 		close.style.display = 'inline';
-		video.innerHTML = `<video id="videoWebm${this.elementNumber}" src=${this.videoUrl} autoplay preload="metadata" controls /></video>`;
+		video.innerHTML = `<video id="videoWebm${this.elementNumber}" src=${this.videoUrl} autoplay preload="metadata" controls loop /></video>`;
 	}
 	this.hideVideo = function(){
 		let thumbnail = document.getElementById(`thumb${this.elementNumber}`);
@@ -120,7 +120,7 @@ function webmVideo(vUrl,tUrl,text,number,code){
 		video.innerHTML = `<div id="videoWebm${this.elementNumber}"/></div>`;
 	}
 	this.shareVideo = function(){
-	window.open(`../allvideos/${this.name}.html`,'_blank');
+		window.open(`../allvideos/${this.name}.html`,'_blank');
 	}
 }
 
@@ -130,18 +130,18 @@ var isArray = Array.isArray || function(value) {
 };
 
 //randomiza los videos
-shuffleArray(urlEurobeatVideo, urlEurobeatThumbnail, eurobeatText, eurobeatCode);
+shuffleArray(urlVideo, urlThumbnail, pageText, pageCode);
 
 //crea todas las thumbnail y  los objetos webmVideo
 var video = [];
-for (let i = 0; i < urlEurobeatVideo.length; i++) {	
-	let previousElement = document.getElementById(`eurobeat${i}`);
-	video[i] = new webmVideo(urlEurobeatVideo[i], urlEurobeatThumbnail[i], eurobeatText[i],i+1, eurobeatCode[i]);
+for (let i = 0; i < urlVideo.length; i++) {	
+	let previousElement = document.getElementById(`${pageCodeString}${i}`);
+	video[i] = new webmVideo(urlVideo[i], urlThumbnail[i], pageText[i],i+1, pageCode[i]);
 	video[i].addToPage(previousElement);
 	}
 
 //crea todos los listeners
-for (let i = 0; i < urlEurobeatVideo.length; i++) {												//al cambiar var i a let i, se solucionó el problema
+for (let i = 0; i < urlVideo.length; i++) {												//al cambiar var i a let i, se solucionó el problema
 	let el = document.getElementById(`thumb${i+1}`);		//los thumb empiezan en 1			//de más abajo que console.log marcaba siempre 7
 	let el2 = document.getElementById(`closeVideo${i+1}`);	//los closeVideo también
 	let el3 = document.getElementById(`shareVideo${i+1}`);
@@ -152,6 +152,7 @@ for (let i = 0; i < urlEurobeatVideo.length; i++) {												//al cambiar var 
 	el2.addEventListener("click", (event) => {									
 		video[i].hideVideo();
 		});
+	//vamos a probar el share
 	el3.addEventListener("click", (event) => {									
 		video[i].shareVideo();
 		});
@@ -161,6 +162,7 @@ function topFunction() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
+
 
 //algoritmo basado en fisher-yates (me lo robé de stackoverflow)
 function shuffleArray() {
@@ -192,3 +194,11 @@ function shuffleArray() {
     }
   }
 }
+
+
+//sobre el pageCode[i];
+//sucede que quiero que todos los videos tengan su página disponible para compartir más facilmente
+//entonces necesito darles un código único de manera que siempre el objeto pueda tener una referencia a dicha página html
+//eso es todo
+
+
