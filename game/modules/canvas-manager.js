@@ -27,6 +27,7 @@ export function updateBackground(state){
 		case -1:
 		case -2:
 			drawBackgroundImage();
+			drawMouseCoords();
 			break;
 		default:
 			console.log("switch background default");
@@ -75,8 +76,6 @@ export function drawMouseCoords(){
 	if (mouseCoords){
 		let loc;
 		loc = windowToCanvas(mouseX, mouseY);
-		updateBackground(game.getState());
-	
 		let pos_x = loc.x + 20,
 			pos_y = loc.y + 30;
 
@@ -98,10 +97,8 @@ export function drawMouseCoords(){
 export function toggleDebugMode(){
 	if(mouseCoords){
 		mouseCoords = false;
-		updateBackground(game.getState());
 	} else {
 		mouseCoords = true;
-		drawMouseCoords(mouseX, mouseY);
 	}
 }
 
