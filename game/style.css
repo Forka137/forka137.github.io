@@ -1,0 +1,258 @@
+body{
+	font-family:Helvetica, Arial, sans-serif;
+	background-color:rgb(54,57,62);		/*color de fondo de discord jz */
+	margin:0px;
+	width:100%; 
+	height:100%;
+}
+
+*{
+/*sirve para quitar el cursero de seleccionar texto*/
+  -webkit-user-select: none;
+}
+
+p{
+	display: block;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding:4px;
+}
+
+ul{
+	display: block;
+    list-style-type: disc;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+}
+video{
+
+}
+
+#songListContainer{
+	display:none;
+	position:absolute;
+	background-color:rgb(220,220,220);
+	width:40vh;
+	height:100vh;
+	/*overflow-x:visible;
+	overflow-y:scroll;*/
+	-ms-overflow-style: none; 
+    scrollbar-width: none;
+    left:-40vh;
+    background-color:rgba(0, 147, 255, 0.8); 
+}
+
+#songListContainer::-webkit-scrollbar { 
+    display: none;
+}
+
+#menu{
+	position:absolute;
+	top:52%;
+	left:42%;
+	width:40vh;
+}
+
+#canvas{
+	display:block;
+}
+
+#controls {
+	font-size:16px;
+	font-weight:bold;
+}
+
+#goBack{
+	font-size:40px;
+	display:none;
+	position:absolute;
+	top:80%;
+	left:84%;
+	padding:40px;
+	color:rgb(255, 255, 255);
+	background-color: rgba(0, 147, 255, 0.8);
+}
+
+#optionContainer{
+	position:absolute;
+	display:none;
+	top:10%;
+	left:20%;
+	height:84%;
+	width:60%;
+	background-color:rgba(0, 147, 255, 0.8);
+}
+
+.songList li{
+	display:block;
+	margin-left:0px;
+	text-decoration:none;
+	list-style-type:none;
+	text-align: center;
+	padding-top:40px;
+	padding-bottom:40px;
+	width:100%;
+	background-color:rgb(251, 133, 22);
+}
+
+.menuList li{
+	display:block;
+	margin-left:0px;
+	text-decoration:none;
+	list-style-type:none;
+	text-align: center;
+	padding-top:40px;
+	padding-bottom:40px;
+	margin-top:10px;
+	margin-bottom:10px;
+	width:100%;
+}
+
+#optionList li{
+	display:block;
+	float:left;
+	clear:left;
+	margin-left:5%;
+	text-decoration:none;
+	list-style-type:none;
+	padding-top:40px;
+	padding-bottom:40px;
+	margin-top:10px;
+	margin-bottom:10px;
+	width:100%;
+}
+
+.optionText{
+	font-size:22px;
+	letter-spacing:0.2em;
+	color:rgb(255, 255, 255);
+}
+
+.menuText::-webkit-user-select {
+	cursor:none;
+}
+
+.menuSelect{
+	background-color: rgba(0, 147, 255, 0.8);
+	min-width:300px;
+}
+
+.listText{
+	font-size:28px;
+	color:rgb(53, 76, 192);
+}
+
+.menuText{
+	font-size:40px;
+	letter-spacing:0.2em;
+	color:rgb(255, 255, 255);
+}
+
+.optionSelect input[type='radio'] { 
+    margin-left:10%;
+    opacity: 0;
+  	position: fixed;
+  	width: 0;
+}
+
+.optionSelect label{
+	margin-left:8%;
+	display: inline-block;
+    background-color: #ddd;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: 2px solid #444;
+    border-radius: 4px;
+}
+
+.optionSelect input[type="radio"]:checked + label {
+    background-color:#4CAF50;
+    border-color: #33ff33;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  transform: scale(2);
+  width:25%;
+  margin-left:20%;
+}
+
+#speedSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 15px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+#speedSlider::-moz-range-thumb {
+  width: 20px;
+  height: 15px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+#otherSlider::-moz-range-thumb {
+  width: 20px;
+  height: 15px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+#otherSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 15px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+#aboutContainer{
+	position:absolute;
+	display:none;
+	top:10%;
+	left:20%;
+	height:40%;
+	width:60%;
+	background-color:rgba(0, 147, 255, 0.8);
+}
+
+#author{
+	position:absolute;
+  	font-family:"Lucida Grande", sans-serif;
+  	font-weight: 900;
+  	font-size: 5em;
+  	margin-top:10%;
+  	margin-left:10%;
+}
+
+#aboutContainer .letter {
+  display: inline-block;
+  line-height: 1em;
+  color: rgb(247, 220, 111);
+  top:10%;
+}
+
+#link137{
+	font-size:22px;
+	position:absolute;
+	top:90%;
+	left:1%;
+}

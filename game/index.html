@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Finalmente</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=0.5 maximum-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible"content="ie=edge" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="shortcut icon" href="joystick2.ico" />
+	</head>
+	<body>
+		<div id="gamebox">
+			<div id="menu">
+				<ul class="menuList">
+					<li class="menuSelect"><span class="menuText">Jugar</span></li>
+					<li class="menuSelect"><span class="menuText">Opciones</span></li>
+					<li class="menuSelect"><span class="menuText">Acerca de</span></li>
+				</ul>
+			</div>
+			<div id="goBack">Volver</div>
+			<div id="songListContainer">
+				<ul class="songList" id="s">
+					<li class="songSelect"><span class="listText">Canción 1</span></li>
+					<li class="songSelect"><span class="listText">Canción 2</span></li>
+					<li class="songSelect"><span class="listText">Canción 3</span></li>
+					<li class="songSelect"><span class="listText">Canción 4</span></li>
+					<li class="songSelect"><span class="listText">Canción 5</span></li>
+					<li class="songSelect"><span class="listText">Canción 6</span></li>
+				</ul>	
+			</div>
+			<div id="optionContainer">
+				<ul id="optionList">
+					<li class="optionSelect"><span class="optionText">Parámetro 1</span>
+						<input type="radio" id="option1" name="optionP1" value="1">
+	  					<label for="option1">Opción 1</label>
+	  					<input type="radio" id="option2" name="optionP1" value="2">
+	  					<label for="option2">Opción 2</label>
+	  					<input type="radio" id="option3" name="optionP1" value="3">
+	  					<label for="option3">Opción 3</label></li>
+					<li class="optionSelect"><span class="optionText">Parámetro 2</span>
+						<input id="speedSlider" class ="slider" type="range"
+						min= "0.2" max="1" step="0.01" value="0.3"/></li>
+					<li class="optionSelect"><span class="optionText">Parámetro 3</span>
+						<input id="otherSlider" class ="slider" type="range"
+						min= "0.2" max="1" step="0.01" value="0.8"/></li>
+				</ul>	
+			</div>
+			<div id="aboutContainer">
+				<div id="author">Creado por Forka137</div>
+				<div id="link137"><a href="https://forka137.github.io/">https://forka137.github.io/</a></div>
+			</div>
+			<canvas id="canvas"></canvas>
+		</div>
+	<script src="app.js" type="module"></script>
+	<script src="./modules/anime.min.js"></script>
+	</body>
+</html>
