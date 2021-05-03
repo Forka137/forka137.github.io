@@ -4,7 +4,7 @@ function lightOn(element, color, fadeTime, translate_X) {
 	anime({
 	  targets: element,
 	  backgroundColor: color,
-	  duration: 10,
+	  duration: fadeTime,
 	  translateX: translate_X,
 	  scale: 1.05,
 	  easing: 'easeInOutQuad'

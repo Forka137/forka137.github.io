@@ -28,6 +28,7 @@ function setState(n){
 			div.showBackButton();
 			canvasManager.updateBackground(-1);
 			break;
+			
 		case -2: //Acerca de
 			state = -1;
 			div.hideMenu();

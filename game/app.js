@@ -12,12 +12,6 @@ var canvas = canvasManager.canvas,
 //carga los listeners y otras cosas
 init.loadEverything(context);
 game.setState(0);
-//context.font = '48px Helvetica';
-//hace un fondo gris
-//context.fillStyle = 'rgba(230,230,230,1.0)'
-//context.fillRect(0,0, canvas.width, canvas.height);
-//   ./ current directory
-// 	../ parent directorys
 
 function animate() {
 	if (true){
@@ -30,11 +24,20 @@ animate();
 
 //modo debug
 document.addEventListener('keydown', logKey);
-	function logKey(e) {
-  		let keyCode = e.code;
-  		if (keyCode == 'F8'){
+function logKey(e) {
+  	let keyCode = e.code;
+  	if (keyCode == 'F8'){
   			canvasManager.toggleDebugMode();
-  		} else if(keyCode == 'F9'){
+
+  	} else if(keyCode == 'F9'){
   			console.log("se presiona F9 jz");
-  		}
-}
+
+  	} else if(keyCode == 'Escape'){
+  			init.goBack(game.getState());
+
+  	}
+}	
+
+
+//   ./ current directory
+// 	../ parent directorys

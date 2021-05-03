@@ -15,6 +15,7 @@ var backgroundLoaded = false,
 	offsetX = 0,
 	offsetY = 0;
 
+backgroundImage.src = './media/background1.jpg';
 window.addEventListener('resize', resizeCanvas, false);
 
 canvas.width = window.innerWidth;
@@ -35,7 +36,6 @@ export function updateBackground(state){
 }
 
 export function loadBackground(){
-	backgroundImage.src = './media/background1.jpg';
 	backgroundImage.onload = function(event){
 		backgroundLoaded = true;
 		drawBackgroundImage(context);
@@ -53,9 +53,9 @@ function drawBackgroundImage(){
 }
 
 function resizeCanvas(){
+	//se actualizan las variables globales del canvas
 	canvas.width =  window.innerWidth;
     canvas.height = window.innerHeight;
-    updateBackground(game.getState());
     console.log("se cambia el tamaño: "+ canvas.width);
 }
 
