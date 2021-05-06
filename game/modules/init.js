@@ -2,6 +2,7 @@ import * as div from "./div-manager.js"
 import * as game from "./state-manager.js"
 import * as anm from "./anime-utils.js"
 import * as canvasManager from "./canvas-manager.js"
+import * as f137 from "./forka-utils.js"
 
 //load sounds
 var acceptSound = new Audio(),
@@ -9,7 +10,10 @@ var acceptSound = new Audio(),
 	backSound = new Audio(),
 
 	isAllLoaded = false,
-	tryToLoad = true,
+
+	areDivsLoaded = false,
+	areSoundsLoaded = false,
+	isBackgroundLoaded = false,
 
 	isSoundReady = true;
 
@@ -21,58 +25,67 @@ acceptSound.volume = 0.3;
 backSound.volume = 0.2;
 tickSound.volume = 0.2;
 
-function loadEverything(context) {
-	//fillWithFakeSongs();
-	div.hideOtherDivs();
-	div.setMenuStyleDisplay();
-	canvasManager.loadBackground();
-	mouseCoordsListener();
-	loadSounds();
-
-	while(tryToLoad){
-		loadListeners();
+function loader() {
+	if (!isAllLoaded){
+		if (!isBackgroundLoaded){
+			canvasManager.loadBackground(function(r) {
+				isBackgroundLoaded = true;
+				console.log("Fondo cargado");
+			});
+		} else if (!areSoundsLoaded) {
+			loadSounds(function(r) {
+				areSoundsLoaded = true;
+				console.log("Sonidos cargados");
+			});
+		} else if (!areDivsLoaded){
+			//fillWithFakeSongs();
+			div.showMenu();
+			loadListeners();
+			areDivsLoaded = true;
+			console.log("Divs cargados");
+		} else {
+			isAllLoaded = true;
+		}
 	}
 }
 
 function loadListeners() {
-	if (isAllLoaded = true){
-		//div.updateSongList();
-		div.songSelect.forEach(function(element){
-		 	element.addEventListener("mouseenter", (event) => {
-				anm.lightOn(element, 'rgb(247, 220, 111)', 10, 25);
-				playSound(tickSound);
-				});	
-														
-			element.addEventListener("mouseleave", (event) => {
-				anm.lightOff(element, 'rgb(251, 133, 22)', 500, 0);
-				});
+	//div.updateSongList();
+	div.songSelect.forEach(function(element){
+	 	element.addEventListener("mouseenter", (event) => {
+			anm.lightOn(element, 'rgb(247, 220, 111)', 10, 25);
+			playSound(tickSound);
+			});	
+													
+		element.addEventListener("mouseleave", (event) => {
+			anm.lightOff(element, 'rgb(251, 133, 22)', 500, 0);
+			});
+		});
+
+	div.menuSelect.forEach(function(element){
+		element.addEventListener("mouseenter", (event) => {
+			anm.lightOn(element, 'rgb(190, 190, 190)', 10, 0);
 			});
 
-		div.menuSelect.forEach(function(element){
-			element.addEventListener("mouseenter", (event) => {
-				anm.lightOn(element, 'rgb(190, 190, 190)', 10, 0);
-				});
+		element.addEventListener("mouseleave", (event) => {
+			anm.lightOff(element, 'rgba(0, 147, 255, 0.8)', 500, 0);
+			});										
+	});
 
-			element.addEventListener("mouseleave", (event) => {
-				anm.lightOff(element, 'rgba(0, 147, 255, 0.8)', 500, 0);
-				});										
-		});
+	div.goBack.addEventListener("mouseenter", (event) => {
+		anm.lightOn(div.goBack, 'rgb(190, 190, 190)', 10, 0);
+	});
 
-		div.goBack.addEventListener("mouseenter", (event) => {
-			anm.lightOn(div.goBack, 'rgb(190, 190, 190)', 10, 0);
-		});
+	div.goBack.addEventListener("mouseleave", (event) => {
+		anm.lightOff(div.goBack, 'rgba(0, 147, 255, 0.8)', 500, 0);
+	});
 
-		div.goBack.addEventListener("mouseleave", (event) => {
-			anm.lightOff(div.goBack, 'rgba(0, 147, 255, 0.8)', 500, 0);
-		});
-
-			goBackClickListener();
-			playClickListener();
-			optionsClickListener();
-			aboutClickListener();
-
-		tryToLoad = false;
-	}
+		goBackClickListener();
+		playClickListener();
+		optionsClickListener();
+		aboutClickListener();
+		mouseCoordsListener();
+		songTestListener();
 }
 
 function goBackClickListener(){
@@ -122,20 +135,18 @@ function fillWithFakeSongs() {
 	}
 }
 
-function loadSounds(){
+function loadSounds(callback){
 	let soundArray = [acceptSound, tickSound, backSound],
 		soundsLoaded = 0,
 		soundCount = soundArray.length;
 
 	soundArray.forEach(sound => {
-		sound.onload = function() {
+		sound.addEventListener('loadeddata', function(){
 			soundsLoaded++;
-			if(soundsLoaded == soundCount) {
-				isAllLoaded = true;
-				//tengo que hacer una función que se encargue de ver que todo se cargue
-				//y acá habrá otra variable.
-	        }
-		}
+			if(soundsLoaded == soundCount && !areSoundsLoaded) {
+				callback();
+			}
+		});
 	});
 }
 
@@ -157,7 +168,16 @@ function goBack(state){
 	}
 }
 
-export {loadEverything, goBack};
+function songTestListener(){
+	div.song1.addEventListener("click", (event) => {
+		//esto es de prueba no más, ahora hay que usar la información entregada
+		f137.loadJSON(function(response){
+			let data = JSON.parse(response)
+			console.log(data.yt_url)
+		}, 'fly me to the moon')
+	});
+}
+export {loader, goBack};
 
 //canvasManager.canvas.onmousemove(){}
 //esta se detenia al momento de pasar por encima de un div.

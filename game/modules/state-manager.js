@@ -8,8 +8,10 @@ function setState(n){
 		case 0: //menu de inicio
 			state = 0;
 			div.showMenu();
-			div.hideOtherDivs();
+			div.hideSongList();
 			div.hideBackButton();
+			div.hideOptions();
+			div.hideAbout();
 			canvasManager.updateBackground(0);
 			break;
 

@@ -35,11 +35,11 @@ export function updateBackground(state){
 	}
 }
 
-export function loadBackground(){
+export function loadBackground(callback){
 	backgroundImage.onload = function(event){
 		backgroundLoaded = true;
 		drawBackgroundImage(context);
-		//aquí quizas deberia hacer una callback function
+		callback();
 	}
 }
 

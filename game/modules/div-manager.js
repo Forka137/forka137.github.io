@@ -8,16 +8,15 @@ export 	var		songSelect = document.querySelectorAll('.songSelect'),
 				songList = document.getElementById('s'),
 				optionContainer = document.getElementById('optionContainer'),
 				aboutContainer = document.getElementById('aboutContainer'),
-				author = document.getElementById('author');
+				author = document.getElementById('author'),
+				song1 = document.getElementById('song1');
 
 export function hideMenu() {
 		menuContainer.style.display = 'none';
-		anm.slideColumn(songContainer, '40vh', 500);
 	}
 
 export function showMenu(){
 		menuContainer.style.display = 'block';
-		anm.slideColumn(songContainer,'-40vh', 500);
 	}
 
 export function hideOtherDivs(){
@@ -29,6 +28,12 @@ export function hideOtherDivs(){
 
 export function showSongList(){
 		songContainer.style.display = 'block';
+		anm.slideColumn(songContainer, '40vh', 500);
+	}
+
+export function hideSongList(){
+		songContainer.style.display = 'block';
+		anm.slideColumn(songContainer,'-40vh', 500);
 	}
 
 export function showBackButton(){
@@ -53,12 +58,6 @@ export function showAbout(){
 
 export function hideAbout(){
 		aboutContainer.style.display = 'none';
-	}
-
-export function setMenuStyleDisplay(){
-		menuSelect.forEach(function(element){
-		element.style.display = 'block';
-		});
 	}
 
 export function setDisplayNone(){

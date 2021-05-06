@@ -1,4 +1,3 @@
-import * as f137 from "./modules/forka-utils.js"
 import * as init from "./modules/init.js"
 import * as game from "./modules/state-manager.js"
 import * as canvasManager from "./modules/canvas-manager.js"
@@ -10,11 +9,11 @@ var canvas = canvasManager.canvas,
 
 //inicialización general
 //carga los listeners y otras cosas
-init.loadEverything(context);
 game.setState(0);
 
 function animate() {
 	if (true){
+    init.loader();
 		canvasManager.updateBackground(game.getState());
 		requestAnimationFrame(animate);
 	}

@@ -1,0 +1,22 @@
+{
+	"name": 		"Fly me to the moon",
+	"yt_url": 		"https://www.youtube.com/watch?v=4S6STxv9LDE",
+	"songStart": 	20000,
+	"songEnd":		262000,
+	"wordmap":[{
+		"word": "fly", 	"time":"24000"
+		},
+		{
+		"word": "me", 	"time":"25000"
+		},
+		{
+		"word": "to", 	"time":"25400"	
+		},
+		{
+		"word": "the", 	"time":"25700"
+		},
+		{
+		"word": "moon", "time":"26000"
+		}
+	]
+}

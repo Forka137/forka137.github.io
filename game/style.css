@@ -52,6 +52,7 @@ video{
 }
 
 #menu{
+	display:none;
 	position:absolute;
 	top:52%;
 	left:42%;

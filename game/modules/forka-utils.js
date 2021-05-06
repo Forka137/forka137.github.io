@@ -35,4 +35,28 @@ Stopwatch.prototype = {
 		this.elapsed = 0;
 	}
 }
-export {Stopwatch};
+
+function loadJSON(callback, filename) {
+    var xobj = new XMLHttpRequest();
+    xobj.overrideMimeType("application/json");
+    xobj.open('GET', `./songs/${filename}.json`, true);
+    xobj.onreadystatechange = function() {
+        if (xobj.readyState == 4 && xobj.status == "200") {
+
+            // .open will NOT return a value but simply returns undefined in async mode so use a callback
+            callback(xobj.responseText);
+
+        }
+    }
+    xobj.send(null);
+}
+
+// se llama con una función asi
+/*loadJSON(function(response) {
+    let data = JSON.parse(response)
+  	// hacer algo con el data
+
+}, 'filename');
+*/
+
+export {Stopwatch, loadJSON};
