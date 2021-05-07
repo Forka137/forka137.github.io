@@ -45,6 +45,7 @@ function loader() {
 			console.log("Divs cargados");
 		} else {
 			isAllLoaded = true;
+			console.log("Todo cargado!");
 		}
 	}
 }
