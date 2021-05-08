@@ -2,10 +2,6 @@ import * as init from "./modules/init.js"
 import * as game from "./modules/state-manager.js"
 import * as canvasManager from "./modules/canvas-manager.js"
 
-var canvas = canvasManager.canvas,
-	context = canvasManager.context,
-	offscreenCanvas = canvasManager.offScreenCanvas,
-	offscreenContext = canvasManager.offScreenContext;
 
 //inicialización general
 //carga los listeners y otras cosas

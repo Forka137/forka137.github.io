@@ -32,12 +32,19 @@ function setState(n){
 			break;
 			
 		case -2: //Acerca de
-			state = -1;
+			state = -2;
 			div.hideMenu();
 			div.showAbout();
 			div.showBackButton();
 			div.showAuthorAnimation();
 			canvasManager.updateBackground(-2);
+			break;
+
+		case 2:
+			state = 2;
+			div.hideSongList();
+			div.showBackButton();
+			canvasManager.updateBackground(2);
 			break;
 	}
 }

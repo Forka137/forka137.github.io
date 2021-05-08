@@ -125,8 +125,7 @@ function aboutClickListener(){
 function mouseCoordsListener(){
 	document.onmousemove = function(event) {
 		canvasManager.updateCoords(event);
-		canvasManager.drawMouseCoords();
-		canvasManager.backgroundFollorMouse();
+		canvasManager.backgroundFollowMouse();
 	}
 }
 
@@ -163,9 +162,11 @@ function playSound(sound){
 }
 
 function goBack(state){
+	playSound(backSound);
 	if (state == 1 || state == -1 || state == -2) {
 		game.setState(0);
-		playSound(backSound);
+	} else if (state == 2){
+		game.setState(1);
 	}
 }
 
@@ -174,8 +175,11 @@ function songTestListener(){
 		//esto es de prueba no más, ahora hay que usar la información entregada
 		f137.loadJSON(function(response){
 			let data = JSON.parse(response)
-			console.log(data.yt_url)
+			console.log(data.name)
 		}, 'fly me to the moon')
+		
+		playSound(acceptSound);
+		game.setState(2);
 	});
 }
 export {loader, goBack};
