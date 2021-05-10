@@ -1,0 +1,16 @@
+para lograr la cola de los objetos se me ocurre
+
+simplemente generar primero un arreglo de todos los objetos (todas las lyrics).
+
+tener un valor "i" global = 0 al inicio.
+
+Cada vez que una palabra deja la pantalla, (this.y < 0) que le sume 1 al "i" global.
+
+El ciclo for de dibujo de las palabras, se encontrará iterando por las primeras 10. (de 0 a 10)
+
+Luego cuando una palabra deje la pantalla, no se dibujará y además subirá el contador i en 1
+
+esto significa que ahora el ciclo for dibuja desde (1 a 11)
+
+(hay que hacer un check de que "11" en este caso esté dentro del largo, si no por defecto el valor final será el del largo).
+

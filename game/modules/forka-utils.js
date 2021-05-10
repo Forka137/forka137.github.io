@@ -36,10 +36,10 @@ Stopwatch.prototype = {
 	}
 }
 
-function loadJSON(callback, filename) {
+function loadJSON(callback, folderName) {
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
-    xobj.open('GET', `./songs/${filename}.json`, true);
+    xobj.open('GET', `./songs/${folderName}/data.json`, true);
     xobj.onreadystatechange = function() {
         if (xobj.readyState == 4 && xobj.status == "200") {
 

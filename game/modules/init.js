@@ -172,13 +172,14 @@ function goBack(state){
 
 function songTestListener(){
 	div.song1.addEventListener("click", (event) => {
-		//esto es de prueba no más, ahora hay que usar la información entregada
+		// esto es de prueba no más, ahora hay que usar la información entregada
+		// de hecho cargar el json acá igual no es necesario
 		f137.loadJSON(function(response){
 			let data = JSON.parse(response)
-			console.log(data.name)
-		}, 'fly me to the moon')
+		}, 'Fly me to the moon')
 		
 		playSound(acceptSound);
+		canvasManager.setSong('Fly me to the moon');
 		game.setState(2);
 	});
 }

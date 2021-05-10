@@ -10,6 +10,7 @@ export var	canvas = document.getElementById('canvas'),
 
 var backgroundLoaded = false,
 	backgroundImage = new Image(),
+	songName = 'no song',
 
 	mouseX = 0,
 	mouseY = 0,
@@ -34,7 +35,7 @@ export function updateBackground(state){
 			break;
 		case 2:
 			mainGame.draw(canvas, context);
-			mainGame.startGame();
+			mainGame.startGame(songName);
 			drawDebug();
 			break;
 		default:
@@ -125,4 +126,8 @@ export function toggleDebugMode(){
 export function updateCoords(event){
 		mouseX = event.clientX;
 		mouseY = event.clientY;
+}
+
+export function setSong(text){
+	songName = text;
 }

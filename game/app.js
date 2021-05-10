@@ -1,6 +1,7 @@
 import * as init from "./modules/init.js"
 import * as game from "./modules/state-manager.js"
 import * as canvasManager from "./modules/canvas-manager.js"
+import * as mainGame from "./modules/game-screen.js"
 
 
 //inicialización general
@@ -25,7 +26,7 @@ function logKey(e) {
   			canvasManager.toggleDebugMode();
 
   	} else if(keyCode == 'F9'){
-  			console.log("se presiona F9 jz");
+  			mainGame.printCurrentTime();
 
   	} else if(keyCode == 'Escape'){
   			init.goBack(game.getState());

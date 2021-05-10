@@ -1,7 +1,8 @@
 import * as div from "./div-manager.js"
 import * as canvasManager from "./canvas-manager.js"
 
-var state = 0;
+var state = 0,
+	song = 'no song';
 
 function setState(n){
 	switch (n) {

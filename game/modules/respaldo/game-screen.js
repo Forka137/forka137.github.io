@@ -11,15 +11,13 @@ var playAreaImg = new Image(),
 	isLoading = false,
 	gameStarted = false,
 	isQueueReady = false,
-	queueIndex = 0,
-	queueLength = 0,
 	getTime,
 	jsonData,
 	lastTime = 0,
 	nowTime = 0,
 	fontSize = 50,
 
-	lyricsArray = [],
+	lyricsArray,
 	cSpeed = 1000,
 	cSpeedLast = 0,
 	lastHitTime = 0, 
@@ -41,7 +39,7 @@ export function draw(canvas, context){
 	}
 
 	if (isQueueReady == true){
-		scrollText(canvas, context);
+			scrollText(canvas, context);
 	}
 }
 
@@ -68,10 +66,6 @@ export function stopGame(){
 		song.pause();
 		song.currentTime = 0;
 		isQueueReady = false;
-		isSongLoaded = false;
-		lastHitTime = 0;
-		cSpeedLast = 0;
-		queueIndex = 0;
 		//funciones de reseteo deberían estar aquí
 	}
 }
@@ -147,7 +141,7 @@ function updateGlobalVariables(canvas, context){
 function loadSong(callback, songName){
 	console.log("cargando canción:"+songName);
 	song = new Audio();
-	song.src = 'https://cdn.discordapp.com/attachments/650603323296317461/839950727442464828/Evangelion_Fly_Me_To_The_Moon.ogg';
+	song.src = `./songs/${songName}/song.ogg`;
 	song.addEventListener('loadeddata', () => {
 	  songDuration = song.duration;
 		console.log("Canción cargada");
@@ -170,20 +164,30 @@ function drawText(canvas, context, text, x, y) {
 function lyricQueue(songName){
 	f137.loadJSON(function(response){
 		let data = JSON.parse(response)
-		let space = 1.1;
 		console.log("ahora se cargan las lyrics");
 
-		queueLength = data.lyricMap.length;
+		//console.log(data.lyricMap.length);
+		// antes de hacerlo automático voy a probar que tal funciona
+		// de forma manual
+		let leftBorder = canvasWidth*0.15;
 
-		for(let i = 0; i < queueLength; i++){
-			lyricsArray[i] = new TextLyric(space, data.lyricMap[i].lyric, data.lyricMap[i].time-20000);
-			space = space + 0.2;
-			if (space > 4) {
-				space = 1.1;
-			}
-		}
-		console.log(lyricsArray);
-		console.log(lyricsArray[2]);
+		var lyric1 = new TextLyric(1.1, 'Fly', 5000),
+			lyric2 = new TextLyric(1.5, 'me', 5700),
+			lyric3 = new TextLyric(2.0, 'to', 6000),
+			lyric4 = new TextLyric(2.5, 'the', 6300),
+			lyric5 = new TextLyric(3.0, 'moon', 6800),
+
+			lyric6 = new TextLyric(1.1, 'and', 7770),
+			lyric7 = new TextLyric(1.5, 'let', 8000),
+			lyric8 = new TextLyric(2.0, 'me', 8300),
+			lyric9 = new TextLyric(2.5, 'play', 8700),
+			lyric10 = new TextLyric(3.0, 'among', 9900),
+			lyric11 = new TextLyric(3.8, 'the', 10300),
+			lyric12 = new TextLyric(4.3, 'stars', 10770);
+
+		lyricsArray = [lyric1, lyric2, lyric3, lyric4, lyric5,
+					lyric6, lyric7, lyric8, lyric9, lyric10, lyric11, lyric12];
+
 		song.currentTime = 20;			
 		song.play();
 		stopwatch.start();
@@ -201,7 +205,6 @@ function TextLyric(leftPos, lyric, hitTime) {
 	this.y = 2000; // por mientras se dibujan afuera
 	this.lyric = lyric;
 	this.hitTime = hitTime;
-	this.available = true;
 
 	//la razón de este if es causar una velocidad cSpeed que aparente ser igual para todas las palabras
 	if (cSpeedLast == 0) {
@@ -222,30 +225,20 @@ TextLyric.prototype = {
 	},
 
 	draw: function(canvas, context) {
-		if (this.available){
-			if (this.y < canvas.height && this.y > 0) {
+		if (this.y < canvas.height && this.y > 0) {
 			drawText(canvas, context, this.lyric, this.x, this.y);
-
-			} else if (this.y < 0){
-				queueIndex++;
-				this.available = false;
-			}
 		}
-	}		
+	}
 }
 
 function scrollText(canvas, context){
-	let supIdx = 10 + queueIndex;
-
-	if ((queueIndex + 10) > queueLength) {
-		supIdx = queueLength;
-	}
-
-	for (let i = queueIndex; i < supIdx; i++){
-		lyricsArray[i].updatePos(canvas, context);
-		lyricsArray[i].draw(canvas, context);
-	}
+	lyricsArray.forEach(function(lyric){
+		lyric.updatePos(canvas, context);
+		lyric.draw(canvas, context);
+	});
 }
+
+
 // function TextLyric(leftPos, lyric, hitTime) {
 // 	this.leftPos = leftPos;
 // 	this.hitTime = hitTime;
