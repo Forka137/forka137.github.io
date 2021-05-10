@@ -20,9 +20,7 @@ var playAreaImg = new Image(),
 	fontSize = 50,
 
 	lyricsArray = [],
-	cSpeed = 1000,
-	cSpeedLast = 0,
-	lastHitTime = 0, 
+	cSpeed = 0.35,
 
 	canvasWidth = 0,
 	canvasHeight = 0,
@@ -69,8 +67,6 @@ export function stopGame(){
 		song.currentTime = 0;
 		isQueueReady = false;
 		isSongLoaded = false;
-		lastHitTime = 0;
-		cSpeedLast = 0;
 		queueIndex = 0;
 		//funciones de reseteo deberían estar aquí
 	}
@@ -147,7 +143,7 @@ function updateGlobalVariables(canvas, context){
 function loadSong(callback, songName){
 	console.log("cargando canción:"+songName);
 	song = new Audio();
-	song.src = 'https://cdn.discordapp.com/attachments/650603323296317461/839950727442464828/Evangelion_Fly_Me_To_The_Moon.ogg';
+	song.src = "https://cdn.discordapp.com/attachments/650603323296317461/839950727442464828/Evangelion_Fly_Me_To_The_Moon.ogg";
 	song.addEventListener('loadeddata', () => {
 	  songDuration = song.duration;
 		console.log("Canción cargada");
@@ -178,12 +174,11 @@ function lyricQueue(songName){
 		for(let i = 0; i < queueLength; i++){
 			lyricsArray[i] = new TextLyric(space, data.lyricMap[i].lyric, data.lyricMap[i].time-20000);
 			space = space + 0.2;
-			if (space > 4) {
+			if (space > 4.4) {
 				space = 1.1;
 			}
 		}
 		console.log(lyricsArray);
-		console.log(lyricsArray[2]);
 		song.currentTime = 20;			
 		song.play();
 		stopwatch.start();
@@ -198,27 +193,16 @@ function lyricQueue(songName){
 function TextLyric(leftPos, lyric, hitTime) {
 	this.leftPos = leftPos;
 	this.x = canvasWidth*0.15*this.leftPos;
-	this.y = 2000; // por mientras se dibujan afuera
+	this.y = 2000; 
 	this.lyric = lyric;
 	this.hitTime = hitTime;
 	this.available = true;
-
-	//la razón de este if es causar una velocidad cSpeed que aparente ser igual para todas las palabras
-	if (cSpeedLast == 0) {
-		this.cSpeed = cSpeed;
-
-	} else {
-		this.cSpeed = cSpeedLast*(this.hitTime/lastHitTime);
-		
-	}
-	cSpeedLast = this.cSpeed;
-	lastHitTime = this.hitTime;
 }
 
 TextLyric.prototype = {
 	updatePos: function(canvas, context) {
 		this.x = canvas.width*0.15*this.leftPos;
-		this.y = canvas.height*0.13 + this.cSpeed*(1 - (stopwatch.getElapsedTime()/this.hitTime));
+		this.y = canvas.height*0.13 - cSpeed * (stopwatch.getElapsedTime() - this.hitTime);
 	},
 
 	draw: function(canvas, context) {

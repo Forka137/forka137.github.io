@@ -4,7 +4,7 @@
 	"songStart": 	20000,
 	"songEnd":		262000,
 	"lyricMap":[{
-		"lyric": "fly", 	"time":"25000"
+		"lyric": "Fly", 	"time":"25000"
 		},
 		{
 		"lyric": "me", 		"time":"25700"
@@ -61,7 +61,7 @@
 		"lyric": "like", 	"time":"35900"
 		},
 		{
-		"lyric": "on", 		"time":"36900"
+		"lyric": "On", 		"time":"36900"
 		},
 		{
 		"lyric": "Jupiter", "time":"37300"
@@ -71,6 +71,147 @@
 		},
 		{
 		"lyric": "Mars", 	"time":"38800"
+		},
+		{
+		"lyric": "In",	 	"time":"40900"
+		},
+		{
+		"lyric": "other", 	"time":"41300"
+		},
+		{
+		"lyric": "words", 	"time":"41700"
+		},
+		{
+		"lyric": "hold", 	"time":"44300"
+		},
+		{
+		"lyric": "my", 		"time":"44800"
+		},
+		{
+		"lyric": "hand", 	"time":"45700"
+		},
+		{
+		"lyric": "In", 		"time":"49000"
+		},
+		{
+		"lyric": "other", 	"time":"49470"
+		},
+		{
+		"lyric": "words", 	"time":"49930"
+		},
+		{
+		"lyric": "Darling", "time":"52300"
+		},
+		{
+		"lyric": "kiss", 	"time":"53760"
+		},
+		{
+		"lyric": "me", 		"time":"54190"
+		},
+		{
+		"lyric": "Fill", 	"time":"57580"
+		},
+		{
+		"lyric": "my", 		"time":"58400"
+		},
+		{
+		"lyric": "heart", 	"time":"58600"
+		},
+		{
+		"lyric": "with", 	"time":"58950"
+		},
+		{
+		"lyric": "song", 	"time":"59400"
+		},
+		{
+		"lyric": "And", 	"time":"60400"
+		},
+		{
+		"lyric": "let", 	"time":"60620"
+		},
+		{
+		"lyric": "me", 		"time":"60970"
+		},
+		{
+		"lyric": "sing", 	"time":"61430"
+		},
+		{
+		"lyric": "for", 	"time":"62430"
+		},
+		{
+		"lyric": "ever",	"time":"62700"
+		},
+		{
+		"lyric": "more",	"time":"63530"
+		},
+		{
+		"lyric": "You",		"time":"66050"
+		},
+		{
+		"lyric": "are",		"time":"66560"
+		},
+		{
+		"lyric": "all",		"time":"66860"
+		},
+		{
+		"lyric": "I",		"time":"67140"
+		},
+		{
+		"lyric": "long",	"time":"67540"
+		},
+		{
+		"lyric": "for",		"time":"68000"
+		},
+		{
+		"lyric": "all",		"time":"69020"
+		},
+		{
+		"lyric": "I",		"time":"69400"
+		},
+		{
+		"lyric": "worship",	"time":"69700"
+		},
+		{
+		"lyric": "and",		"time":"70550"
+		},
+		{
+		"lyric": "adore",	"time":"71500"
+		},
+		{
+		"lyric": "In",		"time":"73580"
+		},
+		{
+		"lyric": "other",	"time":"74000"
+		},
+		{
+		"lyric": "words",	"time":"74600"
+		},
+		{
+		"lyric": "please",	"time":"76670"
+		},
+		{
+		"lyric": "be",		"time":"77400"
+		},
+		{
+		"lyric": "true",	"time":"77850"
+		},
+		{
+		"lyric": "In",		"time":"81720"
+		},
+		{
+		"lyric": "other",	"time":"82170"
+		},
+		{
+		"lyric": "words",	"time":"82900"
+		},
+		{
+		"lyric": "I",		"time":"85000"
+		},
+		{
+		"lyric": "love",	"time":"85630"
+		},
+		{
+		"lyric": "you",		"time":"86700"
 		}
 	]
 }
