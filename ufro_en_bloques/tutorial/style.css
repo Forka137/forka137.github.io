@@ -44,6 +44,18 @@ h2{
 	margin-top:10px;
 }
 
+#instagram{
+	color: #0e81ed;
+}
+
+#instagram:hover{
+	color: rgb(255, 255, 255);
+}
+
+a:hover{
+	color: rgb(255, 255, 255);
+}
+
 .logo{
 	color: rgb(226, 226, 226);
 	text-transform: uppercase;
