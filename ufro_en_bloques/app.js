@@ -41,11 +41,11 @@ const navSlide = () => {
 navSlide();
 
 const imgNames = [
-	'Vista aérea',
+	'Calle Uruguay',
 	'FCJE, Gimnasio Olímpico y Frontis',
 	'Encima del CODI',
 	'Biblioteca central',
-	'Francisco Salazar',
+	'Calle Francisco Salazar',
 ];
 
 let slideIndex = 1;

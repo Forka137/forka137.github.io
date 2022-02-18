@@ -45,7 +45,7 @@ h2{
 }
 
 #instagram{
-	color: #0e81ed;
+	color: #edc602;
 }
 
 #instagram:hover{
@@ -66,7 +66,7 @@ a:hover{
 .nav-links{
 	display: flex;
 	justify-content: space-around;
-	width: 25%;
+	width: 30%;
 }
 
 .nav-links a{
@@ -87,7 +87,13 @@ a:hover{
 }
 
 .nav-links li{
+	display: flex;
+	align-items: center;
 	list-style: none;
+}
+
+.nav-links li img{
+	height: 48px;
 }
 
 .burger-button{

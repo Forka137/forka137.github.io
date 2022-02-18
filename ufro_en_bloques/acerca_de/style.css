@@ -44,7 +44,7 @@ h3{
 .nav-links{
 	display: flex;
 	justify-content: space-around;
-	width: 25%;
+	width: 30%;
 }
 
 .nav-links a{
@@ -65,7 +65,13 @@ h3{
 }
 
 .nav-links li{
+	display: flex;
+	align-items: center;
 	list-style: none;
+}
+
+.nav-links li img{
+	height: 48px;
 }
 
 .burger-button{
